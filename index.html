@@ -237,17 +237,8 @@
             <div class="absolute -right-10 -bottom-10 w-96 h-96 bg-indigo-500/20 rounded-full blur-3xl pointer-events-none"></div>
             
             <div class="relative z-10 flex flex-col lg:flex-row items-center gap-8">
-              <div class="relative shrink-0">
-                <div class="w-36 h-36 sm:w-44 sm:h-44 rounded-3xl bg-gradient-to-tr from-blue-500 via-indigo-500 to-pink-500 p-1.5 shadow-2xl">
-                  <div class="w-full h-full bg-slate-900 rounded-[22px] flex flex-col items-center justify-center text-center p-4">
-                    <span class="text-5xl sm:text-6xl mb-1">👑</span>
-                    <span class="text-xs font-bold uppercase tracking-wider text-indigo-300">Contesting For</span>
-                    <span class="text-sm font-black text-white">PRESIDENT</span>
-                  </div>
-                </div>
-                <span class="absolute -bottom-3 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-amber-400 text-slate-950 font-black text-xs tracking-wider uppercase shadow-lg whitespace-nowrap border border-amber-300">
-                  Candidate #2
-                </span>
+              <div class="relative shrink-0" id="presAvatarContainer">
+                <!-- Rendered dynamically via getCandidateAvatarHtml -->
               </div>
 
               <div class="flex-1 text-center lg:text-left">
@@ -279,13 +270,8 @@
           <!-- Vice President: Nadheem (1) -->
           <div class="p-6 sm:p-8 rounded-3xl bg-white border border-slate-200 shadow-lg relative card-hover">
             <div class="flex items-start gap-5">
-              <div class="relative shrink-0">
-                <div class="w-20 h-20 rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-3xl text-white shadow-md shadow-indigo-500/20">
-                  🚀
-                </div>
-                <span class="absolute -bottom-2 left-1/2 -translate-x-1/2 px-2.5 py-0.5 rounded-full bg-indigo-600 text-white font-black text-[10px] whitespace-nowrap">
-                  Candidate #1
-                </span>
+              <div class="relative shrink-0" id="vpAvatarContainer">
+                <!-- Rendered dynamically -->
               </div>
               <div class="flex-1">
                 <div class="flex items-center gap-2">
@@ -314,13 +300,8 @@
           <!-- Treasurer: Mamnoon (2) -->
           <div class="p-6 sm:p-8 rounded-3xl bg-white border border-slate-200 shadow-lg relative card-hover">
             <div class="flex items-start gap-5">
-              <div class="relative shrink-0">
-                <div class="w-20 h-20 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center text-3xl text-white shadow-md shadow-emerald-500/20">
-                  💎
-                </div>
-                <span class="absolute -bottom-2 left-1/2 -translate-x-1/2 px-2.5 py-0.5 rounded-full bg-emerald-600 text-white font-black text-[10px] whitespace-nowrap">
-                  Candidate #2
-                </span>
+              <div class="relative shrink-0" id="fcAvatarContainer">
+                <!-- Rendered dynamically -->
               </div>
               <div class="flex-1">
                 <div class="flex items-center gap-2">
@@ -876,6 +857,33 @@
     // Live Google Apps Script Endpoint
     const GOOGLE_APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwDDCGIMU3aqadU-k5uEJcjkS64lP5T2oQpoR29hGh12e9CwPWToftDntNEdCabUsYH/exec";
 
+    /**
+     * Converts any Google Drive link or File ID into a direct embeddable image URL.
+     * Supports formats like:
+     * - https://drive.google.com/file/d/FILE_ID/view?usp=sharing
+     * - https://drive.google.com/open?id=FILE_ID
+     * - Direct File ID string
+     */
+    function resolveDriveImageUrl(input) {
+      if (!input || typeof input !== 'string') return '';
+      const trimmed = input.trim();
+      if (!trimmed) return '';
+
+      // Match Google Drive URL patterns
+      const fileIdMatch = trimmed.match(/\/file\/d\/([a-zA-Z0-9_-]+)/) ||
+                          trimmed.match(/[?&]id=([a-zA-Z0-9_-]+)/) ||
+                          trimmed.match(/^([a-zA-Z0-9_-]{25,})$/); // Direct raw file ID
+
+      if (fileIdMatch && fileIdMatch[1]) {
+        const fileId = fileIdMatch[1];
+        // Fast direct Google Content link with fallback option
+        return `https://lh3.googleusercontent.com/d/${fileId}`;
+      }
+
+      // Return regular web URL if not Google Drive
+      return trimmed;
+    }
+
     // Application state
     const campaignState = {
       currentView: 'frontend',
@@ -890,7 +898,7 @@
         approvalRate: 0
       },
 
-      // Official 8 Candidates with assigned numbers
+      // Official 8 Candidates with assigned numbers and image support (Google Drive friendly)
       candidates: {
         pres: {
           id: 'pres',
@@ -898,6 +906,7 @@
           role: 'President',
           name: 'Shahudh',
           num: 2,
+          image: 'https://drive.google.com/file/d/1sPsL66EhT1vUtT6OAWgad24n8CigDGTa/view?usp=drive_link',
           endorsements: 0,
           color: 'from-amber-400 to-orange-500'
         },
@@ -907,6 +916,7 @@
           role: 'Vice President',
           name: 'Nadheem',
           num: 1,
+          image: '',
           endorsements: 0,
           color: 'from-blue-600 to-indigo-600'
         },
@@ -916,6 +926,7 @@
           role: 'Treasurer',
           name: 'Mamnoon',
           num: 2,
+          image: '',
           endorsements: 0,
           color: 'from-emerald-500 to-teal-600'
         },
@@ -925,6 +936,7 @@
           role: 'Member',
           name: 'Zirufaan',
           num: 2,
+          image: '',
           endorsements: 0,
           color: 'from-indigo-500 to-blue-500',
           icon: '📅'
@@ -935,6 +947,7 @@
           role: 'Member',
           name: 'Sharufaan',
           num: 4,
+          image: '',
           endorsements: 0,
           color: 'from-cyan-500 to-blue-600',
           icon: '🏖️'
@@ -945,6 +958,7 @@
           role: 'Member',
           name: 'Furugaan',
           num: 8,
+          image: '',
           endorsements: 0,
           color: 'from-fuchsia-500 to-pink-600',
           icon: '⚽'
@@ -955,6 +969,7 @@
           role: 'Member',
           name: 'Naufal',
           num: 9,
+          image: '',
           endorsements: 0,
           color: 'from-emerald-500 to-green-600',
           icon: '💪'
@@ -965,6 +980,7 @@
           role: 'Member',
           name: 'Shafraaz',
           num: 3,
+          image: '',
           endorsements: 0,
           color: 'from-amber-500 to-rose-500',
           icon: '💡'
@@ -1134,6 +1150,45 @@
     };
 
     let activeFrontendCategory = 'All';
+
+    /**
+     * Helper to render photo avatar or fallback styled graphic
+     */
+    function renderCandidateAvatar(candidate, sizeClass = 'w-20 h-20', roundedClass = 'rounded-2xl', fallbackIcon = '👤') {
+      const resolvedImg = resolveDriveImageUrl(candidate.image);
+      const uniqueId = `avatar_${candidate.id}_${Math.floor(Math.random() * 1000)}`;
+
+      if (resolvedImg) {
+        return `
+          <div class="${sizeClass} ${roundedClass} overflow-hidden bg-slate-100 shadow-md relative group border border-slate-200">
+            <img src="${resolvedImg}" 
+                 alt="${candidate.name}" 
+                 id="${uniqueId}"
+                 class="w-full h-full object-cover object-center" 
+                 onerror="handleAvatarError(this, '${candidate.color}', '${fallbackIcon}', '${candidate.name}')">
+          </div>
+        `;
+      }
+
+      // Default styled badge if no image provided
+      return `
+        <div class="${sizeClass} ${roundedClass} bg-gradient-to-tr ${candidate.color || 'from-indigo-500 to-purple-600'} flex items-center justify-center text-3xl text-white shadow-md">
+          ${candidate.icon || fallbackIcon}
+        </div>
+      `;
+    }
+
+    function handleAvatarError(imgElem, colorClass, fallbackIcon, name) {
+      // In case Google content link fails, try thumbnail API or fallback to badge
+      const parent = imgElem.parentElement;
+      if (parent) {
+        parent.innerHTML = `
+          <div class="w-full h-full bg-gradient-to-tr ${colorClass || 'from-indigo-500 to-purple-600'} flex items-center justify-center text-3xl text-white font-bold">
+            ${fallbackIcon || name.charAt(0)}
+          </div>
+        `;
+      }
+    }
 
     // Fetch Live Votes silently from Google Apps Script
     async function fetchLiveVotesFromAppsScript(isUserInitiated = false) {
@@ -1332,6 +1387,52 @@
     }
 
     function renderCandidateCards() {
+      // 1. Render President Avatar
+      const presContainer = document.getElementById('presAvatarContainer');
+      if (presContainer) {
+        const pres = campaignState.candidates.pres;
+        const resolvedPresImg = resolveDriveImageUrl(pres.image);
+        if (resolvedPresImg) {
+          presContainer.innerHTML = `
+            <div class="w-36 h-36 sm:w-44 sm:h-44 rounded-3xl bg-gradient-to-tr from-blue-500 via-indigo-500 to-pink-500 p-1.5 shadow-2xl">
+              <div class="w-full h-full bg-slate-900 rounded-[22px] overflow-hidden">
+                <img src="${resolvedPresImg}" alt="${pres.name}" class="w-full h-full object-cover object-center" onerror="this.onerror=null; this.src=''; presContainer.innerHTML=getPresDefaultAvatar();">
+              </div>
+            </div>
+            <span class="absolute -bottom-3 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-amber-400 text-slate-950 font-black text-xs tracking-wider uppercase shadow-lg whitespace-nowrap border border-amber-300">
+              Candidate #${pres.num}
+            </span>
+          `;
+        } else {
+          presContainer.innerHTML = getPresDefaultAvatar();
+        }
+      }
+
+      // 2. Render Vice President Avatar
+      const vpContainer = document.getElementById('vpAvatarContainer');
+      if (vpContainer) {
+        const vp = campaignState.candidates.vp;
+        vpContainer.innerHTML = `
+          ${renderCandidateAvatar(vp, 'w-20 h-20', 'rounded-2xl', '🚀')}
+          <span class="absolute -bottom-2 left-1/2 -translate-x-1/2 px-2.5 py-0.5 rounded-full bg-indigo-600 text-white font-black text-[10px] whitespace-nowrap">
+            Candidate #${vp.num}
+          </span>
+        `;
+      }
+
+      // 3. Render Treasurer Avatar
+      const fcContainer = document.getElementById('fcAvatarContainer');
+      if (fcContainer) {
+        const fc = campaignState.candidates.fc;
+        fcContainer.innerHTML = `
+          ${renderCandidateAvatar(fc, 'w-20 h-20', 'rounded-2xl', '💎')}
+          <span class="absolute -bottom-2 left-1/2 -translate-x-1/2 px-2.5 py-0.5 rounded-full bg-emerald-600 text-white font-black text-[10px] whitespace-nowrap">
+            Candidate #${fc.num}
+          </span>
+        `;
+      }
+
+      // 4. Render 5 Committee Members
       const membersGrid = document.getElementById('membersGrid');
       if (membersGrid) {
         const memberKeys = ['m1', 'm2', 'm3', 'm4', 'm5'];
@@ -1340,8 +1441,8 @@
           return `
             <div class="p-5 rounded-3xl bg-white border border-slate-200 shadow-sm card-hover flex flex-col justify-between text-center relative overflow-hidden">
               <div>
-                <div class="w-14 h-14 mx-auto rounded-2xl bg-gradient-to-tr ${m.color} text-white flex items-center justify-center text-2xl mb-3 shadow-md">
-                  ${m.icon}
+                <div class="mx-auto mb-3 flex items-center justify-center">
+                  ${renderCandidateAvatar(m, 'w-16 h-16', 'rounded-2xl', m.icon)}
                 </div>
                 <span class="px-2.5 py-0.5 rounded-full text-[11px] font-black bg-indigo-50 text-indigo-700 border border-indigo-200 inline-block mb-1">
                   Candidate #${m.num}
@@ -1359,6 +1460,7 @@
         }).join('');
       }
 
+      // 5. Render Voting Ballot checkboxes
       const voteCheckboxGroup = document.getElementById('votingMembersCheckboxGroup');
       if (voteCheckboxGroup) {
         const memberKeys = ['m1', 'm2', 'm3', 'm4', 'm5'];
@@ -1375,6 +1477,22 @@
           `;
         }).join('');
       }
+    }
+
+    function getPresDefaultAvatar() {
+      const pres = campaignState.candidates.pres;
+      return `
+        <div class="w-36 h-36 sm:w-44 sm:h-44 rounded-3xl bg-gradient-to-tr from-blue-500 via-indigo-500 to-pink-500 p-1.5 shadow-2xl">
+          <div class="w-full h-full bg-slate-900 rounded-[22px] flex flex-col items-center justify-center text-center p-4">
+            <span class="text-5xl sm:text-6xl mb-1">👑</span>
+            <span class="text-xs font-bold uppercase tracking-wider text-indigo-300">Contesting For</span>
+            <span class="text-sm font-black text-white">PRESIDENT</span>
+          </div>
+        </div>
+        <span class="absolute -bottom-3 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-amber-400 text-slate-950 font-black text-xs tracking-wider uppercase shadow-lg whitespace-nowrap border border-amber-300">
+          Candidate #${pres.num}
+        </span>
+      `;
     }
 
     function recalculatePopularityMeters() {
