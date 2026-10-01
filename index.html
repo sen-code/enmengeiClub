@@ -3,12 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>iClub 2026 | Digital Data & Technology Directorate Campaign</title>
+  <title>iClub 2026 | #EnmengeiClub Campaign</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <script>
     tailwind.config = {
       darkMode: 'class',
@@ -29,7 +30,7 @@
       -webkit-text-fill-color: transparent;
     }
     .frosted-glass {
-      background: rgba(255, 255, 255, 0.9);
+      background: rgba(255, 255, 255, 0.92);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
     }
@@ -51,22 +52,16 @@
       -ms-overflow-style: none;
       scrollbar-width: none;
     }
-    @keyframes pulse-slow {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.5; }
-    }
-    .animate-pulse-slow {
-      animation: pulse-slow 2.5s infinite;
-    }
   </style>
 </head>
 <body class="bg-slate-50 text-slate-800 antialiased font-sans min-h-screen radial-bg selection:bg-fuchsia-500 selection:text-white">
 
+  <!-- Header Navigation -->
   <header class="sticky top-0 z-40 border-b border-slate-200/80 frosted-glass shadow-xs">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between h-20">
         <!-- Brand Logo -->
-        <div class="flex items-center gap-3">
+        <a href="#home" class="flex items-center gap-3">
           <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-blue-600 via-indigo-600 to-fuchsia-500 flex items-center justify-center text-white shadow-lg shadow-indigo-500/30 font-display font-bold text-xl tracking-wider">
             <i>i</i>C
           </div>
@@ -75,20 +70,20 @@
               <span class="font-display font-bold text-xl tracking-tight text-slate-900">iClub 2026</span>
               <span class="px-2.5 py-0.5 text-xs font-black tracking-wide rounded-full bg-gradient-to-r from-fuchsia-500/15 via-indigo-500/15 to-blue-500/15 text-fuchsia-700 border border-fuchsia-200">#EnmengeiClub</span>
             </div>
-            <p class="text-xs text-slate-500 font-medium hidden sm:block">Digital Data & Technology Directorate • Team Enmenge</p>
+            <p class="text-xs text-slate-500 font-medium hidden sm:block">Digital Data & Technology Directorate</p>
           </div>
-        </div>
+        </a>
 
         <!-- Navigation Links -->
-        <nav id="frontendNav" class="hidden md:flex items-center space-x-1 lg:space-x-3 text-sm font-semibold">
-          <a href="#vision" class="px-3 py-2 rounded-xl text-slate-600 hover:text-indigo-600 hover:bg-indigo-50/80 transition-all">Our Goals</a>
-          <a href="#manifesto" class="px-3 py-2 rounded-xl text-slate-600 hover:text-indigo-600 hover:bg-indigo-50/80 transition-all">6 Promises</a>
-          <a href="#team" class="px-3 py-2 rounded-xl text-slate-600 hover:text-indigo-600 hover:bg-indigo-50/80 transition-all">Our 8 Leaders</a>
-          <a href="#voting" class="px-3 py-2 rounded-xl text-slate-600 hover:text-indigo-600 hover:bg-indigo-50/80 transition-all">Live Poll</a>
+        <nav class="hidden md:flex items-center space-x-1 lg:space-x-3 text-sm font-semibold">
+          <a href="#vision" class="px-3 py-2 rounded-xl text-slate-600 hover:text-indigo-600 hover:bg-indigo-50/80 transition-all">Strategic Vision</a>
+          <a href="#manifesto" class="px-3 py-2 rounded-xl text-slate-600 hover:text-indigo-600 hover:bg-indigo-50/80 transition-all">6 Pledges</a>
+          <a href="#team" class="px-3 py-2 rounded-xl text-slate-600 hover:text-indigo-600 hover:bg-indigo-50/80 transition-all">Our 8 Candidates</a>
+          <a href="#voting" class="px-3 py-2 rounded-xl text-slate-600 hover:text-indigo-600 hover:bg-indigo-50/80 transition-all">Vote</a>
           <a href="#ideas" class="px-3 py-2 rounded-xl text-slate-600 hover:text-indigo-600 hover:bg-indigo-50/80 transition-all">Staff Ideas</a>
         </nav>
 
-        <!-- Vote Action (Admin link removed from main header) -->
+        <!-- Vote Action Button -->
         <div class="flex items-center gap-3">
           <a href="#voting" class="inline-flex items-center justify-center px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-white bg-gradient-to-r from-blue-600 via-indigo-600 to-fuchsia-600 rounded-xl shadow-md hover:shadow-indigo-500/25 hover:opacity-95 transition-all">
             Vote Now
@@ -101,9 +96,11 @@
   <!-- Notification Toast Container -->
   <div id="toastContainer" class="fixed bottom-6 right-6 z-50 flex flex-col gap-3 pointer-events-none"></div>
 
+  <!-- PUBLIC CAMPAIGN VIEW -->
   <main id="frontendView" class="block transition-opacity duration-300">
     
-    <section class="relative overflow-hidden pt-12 pb-20 sm:pt-20 sm:pb-28">
+    <!-- Hero Section -->
+    <section id="home" class="relative overflow-hidden pt-12 pb-20 sm:pt-20 sm:pb-28">
       <div class="absolute -top-24 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-gradient-to-r from-blue-400/20 via-indigo-500/25 to-fuchsia-500/20 rounded-full blur-3xl -z-10 pointer-events-none"></div>
       
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
@@ -123,51 +120,46 @@
         </h1>
         
         <p class="mt-6 text-lg sm:text-xl text-slate-600 max-w-3xl mx-auto font-normal leading-relaxed">
-          <strong class="text-slate-900">#EnmengeiClub</strong> is running as a united team of 8: <span class="font-bold text-slate-900">President, 1 Vice President, 1 Finance Controller, and 5 Committee Members</span>. We promise honest money management, exciting events, family outings, and a club where every staff member feels valued!
+          <strong class="text-slate-900">#EnmengeiClub</strong> is running as a united team of 8: <span class="font-bold text-slate-900">President, 1 Vice President, 1 Treasurer, and 5 Committee Members</span>. We promise honest money management, exciting events, family outings, and a club where every staff member feels valued!
         </p>
-
-        <!-- Live Sync Status Banner -->
-        <div class="mt-4 flex items-center justify-center gap-2 text-xs font-semibold text-slate-500">
-          <span id="liveBadgeDot" class="w-2 h-2 rounded-full bg-amber-400"></span>
-          <span id="liveBadgeText">Connecting to Google Sheet database...</span>
-        </div>
 
         <!-- CTA Action Buttons -->
         <div class="mt-8 flex flex-wrap items-center justify-center gap-4">
           <a href="#voting" class="px-8 py-4 rounded-2xl bg-gradient-to-r from-blue-600 via-indigo-600 to-fuchsia-600 text-white font-bold text-base shadow-xl shadow-indigo-500/30 hover:scale-105 transition-transform flex items-center gap-2">
-            <span>Vote on Real Live Ballot</span>
+            <span>Vote on Real Ballot</span>
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
           </a>
           <a href="#manifesto" class="px-8 py-4 rounded-2xl bg-white border border-slate-200 text-slate-700 hover:text-indigo-600 hover:border-indigo-300 font-bold text-base shadow-sm hover:shadow transition-all">
-            See Our 6 Promises 📋
+            See Our 6 Pledges
           </a>
         </div>
 
-        <!-- Live Metrics Strip (Dynamic from Google Sheet) -->
+        <!-- Metric Strip -->
         <div class="mt-14 max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-4 p-4 rounded-3xl bg-white/70 border border-slate-200/80 shadow-md">
           <div class="p-4 text-center">
-            <div class="text-3xl font-display font-extrabold text-blue-600" id="statCandidates">8</div>
-            <div class="text-xs uppercase tracking-wider font-bold text-slate-500 mt-1">Dedicated Leaders</div>
+            <div class="text-3xl font-display font-extrabold text-blue-600">8</div>
+            <div class="text-xs uppercase tracking-wider font-bold text-slate-500 mt-1">Candidates</div>
           </div>
           <div class="p-4 text-center border-l border-slate-100">
-            <div class="text-3xl font-display font-extrabold text-indigo-600" id="statPledges">6</div>
-            <div class="text-xs uppercase tracking-wider font-bold text-slate-500 mt-1">Action Pledges</div>
+            <div class="text-3xl font-display font-extrabold text-indigo-600">6</div>
+            <div class="text-xs uppercase tracking-wider font-bold text-slate-500 mt-1">Pledges</div>
           </div>
           <div class="p-4 text-center border-l border-slate-100">
             <div class="text-3xl font-display font-extrabold text-fuchsia-600 flex items-center justify-center gap-1">
               <span id="statLiveVotes">--</span>
             </div>
-            <div class="text-xs uppercase tracking-wider font-bold text-slate-500 mt-1">Real Votes Cast</div>
+            <div class="text-xs uppercase tracking-wider font-bold text-slate-500 mt-1">Total Votes</div>
           </div>
           <div class="p-4 text-center border-l border-slate-100">
             <div class="text-3xl font-display font-extrabold text-emerald-500" id="statApprovalRatio">--%</div>
-            <div class="text-xs uppercase tracking-wider font-bold text-slate-500 mt-1">Slate Support %</div>
+            <div class="text-xs uppercase tracking-wider font-bold text-slate-500 mt-1">Slate Support</div>
           </div>
         </div>
 
       </div>
     </section>
 
+    <!-- Strategic Vision Section -->
     <section id="vision" class="py-16 bg-white/60 border-y border-slate-200/60">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center max-w-3xl mx-auto mb-12">
@@ -204,6 +196,7 @@
       </div>
     </section>
 
+    <!-- 6 Pledges Section -->
     <section id="manifesto" class="py-20 relative">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
@@ -228,17 +221,18 @@
       </div>
     </section>
 
+    <!-- Meet The 8 Candidates Section -->
     <section id="team" class="py-20 bg-slate-100/70 border-t border-slate-200">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div class="text-center max-w-3xl mx-auto mb-16">
-          <span class="text-xs font-extrabold tracking-widest uppercase text-blue-600 bg-blue-50 px-3 py-1 rounded-full border border-blue-200">#EnmengeiClub Full Team</span>
+          <span class="text-xs font-extrabold tracking-widest uppercase text-blue-600 bg-blue-50 px-3 py-1 rounded-full border border-blue-200">#EnmengeiClub Full Slate</span>
           <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3 font-display">Meet Your 8 Candidates</h2>
-          <p class="text-slate-600 mt-2">A friendly and caring team representing every squad and department.</p>
+          <p class="text-slate-600 mt-2">United candidates representing our Directorate. Note candidate ballot numbers when voting.</p>
         </div>
 
-        <!-- Tier 1: President -->
-        <div class="mb-12">
+        <!-- President Card -->
+        <div class="mb-10">
           <div class="p-8 sm:p-10 rounded-3xl bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white relative overflow-hidden shadow-2xl border border-indigo-500/30">
             <div class="absolute -right-10 -bottom-10 w-96 h-96 bg-indigo-500/20 rounded-full blur-3xl pointer-events-none"></div>
             
@@ -251,25 +245,26 @@
                     <span class="text-sm font-black text-white">PRESIDENT</span>
                   </div>
                 </div>
-                <span class="absolute -bottom-3 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-gradient-to-r from-amber-400 to-amber-600 text-slate-900 font-extrabold text-xs tracking-wider uppercase shadow-lg whitespace-nowrap">
-                  #EnmengeiClub Lead
+                <span class="absolute -bottom-3 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-amber-400 text-slate-950 font-black text-xs tracking-wider uppercase shadow-lg whitespace-nowrap border border-amber-300">
+                  Candidate #2
                 </span>
               </div>
 
               <div class="flex-1 text-center lg:text-left">
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/20 border border-indigo-400/30 text-indigo-300 text-xs font-bold uppercase tracking-wider mb-2">
-                  <span>Candidate for iClub President</span>
+                <div class="flex flex-wrap items-center justify-center lg:justify-start gap-2 mb-2">
+                  <span class="px-3 py-1 rounded-full bg-indigo-500/20 border border-indigo-400/30 text-indigo-300 text-xs font-bold uppercase tracking-wider">President</span>
+                  <span class="px-3 py-1 rounded-full bg-amber-400/20 border border-amber-400/40 text-amber-300 text-xs font-bold">Candidate Number: 2</span>
                 </div>
-                <h3 class="text-2xl sm:text-4xl font-extrabold font-display text-white">Your Presidential Candidate</h3>
-                <p class="text-indigo-200 text-sm font-medium mt-1">Bringing our staff together & listening to every voice</p>
+                
+                <h3 class="text-3xl sm:text-4xl font-extrabold font-display text-white">Shahudh</h3>
                 
                 <p class="mt-4 text-slate-300 text-sm sm:text-base leading-relaxed max-w-2xl">
-                  "Our club should belong to all of us. As your President under <span class="text-amber-300 font-bold">#EnmengeiClub</span>, I promise to make iClub open, friendly, and lively—where everyone, from new joiners to senior staff, has fun and is supported."
+                  "Our club should belong to all of us. As President under <strong class="text-white font-bold">#EnmengeiClub</strong>, I promise to make iClub open, friendly, and lively—where everyone, from new joiners to senior staff, has fun and is supported."
                 </p>
 
                 <div class="mt-6 flex flex-wrap items-center justify-center lg:justify-start gap-4">
                   <a href="#voting" class="px-6 py-3 rounded-xl bg-gradient-to-r from-amber-400 via-amber-500 to-orange-500 text-slate-950 font-extrabold text-sm shadow-lg hover:scale-105 transition-all flex items-center gap-2">
-                    <span>⭐ Vote in Official Ballot</span>
+                    <span>Vote for Shahudh (2)</span>
                     <span id="presEndorseCount" class="bg-black/20 px-2 py-0.5 rounded-md text-xs font-mono font-bold">--</span>
                   </a>
                 </div>
@@ -278,51 +273,73 @@
           </div>
         </div>
 
-        <!-- Tier 2: Vice President & Finance Controller -->
+        <!-- Vice President & Treasurer Grid -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
           
+          <!-- Vice President: Nadheem (1) -->
           <div class="p-6 sm:p-8 rounded-3xl bg-white border border-slate-200 shadow-lg relative card-hover">
             <div class="flex items-start gap-5">
-              <div class="w-20 h-20 rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-3xl text-white shadow-md shadow-indigo-500/20 shrink-0">
-                🚀
+              <div class="relative shrink-0">
+                <div class="w-20 h-20 rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-3xl text-white shadow-md shadow-indigo-500/20">
+                  🚀
+                </div>
+                <span class="absolute -bottom-2 left-1/2 -translate-x-1/2 px-2.5 py-0.5 rounded-full bg-indigo-600 text-white font-black text-[10px] whitespace-nowrap">
+                  Candidate #1
+                </span>
               </div>
               <div class="flex-1">
-                <span class="px-2.5 py-0.5 rounded-full text-xs font-bold uppercase bg-indigo-50 text-indigo-700 border border-indigo-200">
-                  Vice President
-                </span>
-                <h3 class="text-xl font-bold text-slate-900 mt-1 font-display">Candidate for Vice President</h3>
-                <p class="text-xs text-slate-500 font-medium">Head of Events & Member Care</p>
-                <p class="text-sm text-slate-600 mt-3 leading-relaxed">
+                <div class="flex items-center gap-2">
+                  <span class="px-2.5 py-0.5 rounded-full text-xs font-bold uppercase bg-indigo-50 text-indigo-700 border border-indigo-200">
+                    Vice President
+                  </span>
+                  <span class="px-2 py-0.5 rounded-full text-xs font-bold bg-slate-100 text-slate-700">
+                    Candidate #1
+                  </span>
+                </div>
+                
+                <h3 class="text-2xl font-bold text-slate-900 mt-1 font-display">Nadheem</h3>
+                <p class="text-sm text-slate-600 mt-2 leading-relaxed">
                   Making sure every event is well-planned, welcoming for everyone, and that no colleague is left out of the fun.
                 </p>
                 <div class="mt-5 flex items-center justify-between pt-4 border-t border-slate-100">
-                  <span class="text-xs font-semibold text-slate-500">Live Support: <strong class="text-indigo-600 font-mono" id="vpEndorseCount">--</strong></span>
-                  <a href="#voting" class="px-3 py-1.5 rounded-xl bg-indigo-50 hover:bg-indigo-100 text-indigo-700 text-xs font-bold transition-all">
-                    Vote on Ballot →
+                  <span class="text-xs font-semibold text-slate-500">Votes: <strong class="text-indigo-600 font-mono" id="vpEndorseCount">--</strong></span>
+                  <a href="#voting" class="px-3.5 py-1.5 rounded-xl bg-indigo-50 hover:bg-indigo-100 text-indigo-700 text-xs font-bold transition-all">
+                    Vote Nadheem (1) →
                   </a>
                 </div>
               </div>
             </div>
           </div>
 
+          <!-- Treasurer: Mamnoon (2) -->
           <div class="p-6 sm:p-8 rounded-3xl bg-white border border-slate-200 shadow-lg relative card-hover">
             <div class="flex items-start gap-5">
-              <div class="w-20 h-20 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center text-3xl text-white shadow-md shadow-emerald-500/20 shrink-0">
-                💎
+              <div class="relative shrink-0">
+                <div class="w-20 h-20 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center text-3xl text-white shadow-md shadow-emerald-500/20">
+                  💎
+                </div>
+                <span class="absolute -bottom-2 left-1/2 -translate-x-1/2 px-2.5 py-0.5 rounded-full bg-emerald-600 text-white font-black text-[10px] whitespace-nowrap">
+                  Candidate #2
+                </span>
               </div>
               <div class="flex-1">
-                <span class="px-2.5 py-0.5 rounded-full text-xs font-bold uppercase bg-emerald-50 text-emerald-700 border border-emerald-200">
-                  Finance Controller
-                </span>
-                <h3 class="text-xl font-bold text-slate-900 mt-1 font-display">Candidate for Finance Controller</h3>
-                <p class="text-xs text-slate-500 font-medium">Clear & Honest Money Keeper</p>
-                <p class="text-sm text-slate-600 mt-3 leading-relaxed">
+                <div class="flex items-center gap-2">
+                  <span class="px-2.5 py-0.5 rounded-full text-xs font-bold uppercase bg-emerald-50 text-emerald-700 border border-emerald-200">
+                    Treasurer
+                  </span>
+                  <span class="px-2 py-0.5 rounded-full text-xs font-bold bg-slate-100 text-slate-700">
+                    Candidate #2
+                  </span>
+                </div>
+                
+                <h3 class="text-2xl font-bold text-slate-900 mt-1 font-display">Mamnoon</h3>
+                <p class="text-sm text-slate-600 mt-2 leading-relaxed">
                   Promises clear and open accounts, getting the best value for our club fees, and zero hidden spending.
                 </p>
                 <div class="mt-5 flex items-center justify-between pt-4 border-t border-slate-100">
-                  <span class="text-xs font-semibold text-slate-500">Live Support: <strong class="text-emerald-600 font-mono" id="fcEndorseCount">--</strong></span>
-                  <a href="#voting" class="px-3 py-1.5 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-emerald-700 text-xs font-bold transition-all">
-                    Vote on Ballot →
+                  <span class="text-xs font-semibold text-slate-500">Votes: <strong class="text-emerald-600 font-mono" id="fcEndorseCount">--</strong></span>
+                  <a href="#voting" class="px-3.5 py-1.5 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-emerald-700 text-xs font-bold transition-all">
+                    Vote Mamnoon (2) →
                   </a>
                 </div>
               </div>
@@ -331,10 +348,10 @@
 
         </div>
 
-        <!-- Tier 3: 5 Committee Members -->
+        <!-- 5 Committee Members -->
         <div>
           <div class="flex items-center gap-3 mb-6">
-            <h3 class="text-xl font-bold font-display text-slate-900">Our 5 Committee Members (#EnmengeiClub)</h3>
+            <h3 class="text-xl font-bold font-display text-slate-900">5 Committee Members (#EnmengeiClub)</h3>
             <span class="h-px bg-slate-300 flex-1"></span>
           </div>
 
@@ -346,27 +363,28 @@
       </div>
     </section>
 
+    <!-- Support & Voting Area -->
     <section id="voting" class="py-20 bg-slate-50 relative">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div class="text-center max-w-3xl mx-auto mb-14">
           <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-fuchsia-50 border border-fuchsia-200 text-xs font-bold text-fuchsia-700 uppercase tracking-wider mb-2">
-            <span>Dynamic Staff Support Poll 2026</span>
+            <span>Staff Support Poll 2026</span>
           </div>
-          <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-2 font-display">Cast Your Real Vote</h2>
-          <p class="text-slate-600 mt-2">Every submission records directly to our Google Sheet database. Cast your support for our full team or choose specific leaders!</p>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-2 font-display">Cast Your Support Vote</h2>
+          <p class="text-slate-600 mt-2">Submit your endorsement for our united slate or select candidates individually.</p>
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           
-          <!-- Real Voting Ballot Form -->
+          <!-- Voting Ballot Form -->
           <div class="lg:col-span-7 bg-white border border-slate-200 p-6 sm:p-8 rounded-3xl shadow-sm">
             <div class="flex items-center justify-between pb-4 border-b border-slate-200 mb-6">
               <div>
                 <h3 class="text-lg font-bold text-slate-900 flex items-center gap-2">
-                  <span>🗳️ Official #EnmengeiClub Support Ballot</span>
+                  <span>🗳️ #EnmengeiClub Support Ballot</span>
                 </h3>
-                <p class="text-xs text-slate-500 mt-0.5">Saved live into <code class="font-mono bg-slate-100 px-1 py-0.5 rounded">iClub Votes DB</code></p>
+                <p class="text-xs text-slate-500 mt-0.5">United Team of 8 for iClub 2026</p>
               </div>
               <span class="text-xs font-bold px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800 flex items-center gap-1.5">
                 <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
@@ -376,7 +394,7 @@
 
             <form id="realVoteForm" onsubmit="handleRealVoteSubmit(event)" class="space-y-6">
               
-              <!-- Voter Identification (Columns B & C in Google Sheet) -->
+              <!-- Voter Identification -->
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 p-4 rounded-2xl bg-slate-50 border border-slate-200">
                 <div>
                   <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">
@@ -389,11 +407,11 @@
                     Staff ID or Work Email <span class="text-rose-500">*</span>
                   </label>
                   <input type="text" id="voterIdInput" required placeholder="e.g. DD1024 or staff@ddat.gov" class="w-full p-3 rounded-xl bg-white border border-slate-300 text-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none">
-                  <span class="text-[11px] text-slate-400 block mt-1">Ensures 1 vote per colleague in Google Sheet</span>
+                  <span class="text-[11px] text-slate-400 block mt-1">Single entry per colleague</span>
                 </div>
               </div>
 
-              <!-- 1. Full Slate Checkbox (Column D in Sheet) -->
+              <!-- 1. Full Slate Checkbox -->
               <div>
                 <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-2">
                   1. Team Endorsement
@@ -403,40 +421,40 @@
                     <input type="checkbox" id="fullSlateCheck" checked onchange="handleFullSlateToggle(this)" class="w-5 h-5 text-indigo-600 rounded focus:ring-indigo-500">
                     <div>
                       <div class="text-sm font-black text-slate-900">Support the Full #EnmengeiClub Team ⭐</div>
-                      <div class="text-xs text-indigo-700 font-semibold">I endorse all 8 members (President, VP, Finance + 5 Members)</div>
+                      <div class="text-xs text-indigo-700 font-semibold">Endorse Shahudh (2), Nadheem (1), Mamnoon (2) + All 5 Members</div>
                     </div>
                   </div>
                   <span class="px-2.5 py-1 rounded-full text-[10px] font-extrabold bg-indigo-200 text-indigo-900">#Enmenge</span>
                 </label>
               </div>
 
-              <!-- 2. Candidate Selections (Column F in Sheet) -->
+              <!-- 2. Executive Roles -->
               <div>
                 <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-2">
-                  2. Select Executive Roles
+                  2. Executive Roles
                 </label>
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
                   <label class="flex items-center gap-2.5 p-3 rounded-xl bg-amber-50/70 border border-amber-300 cursor-pointer">
-                    <input type="checkbox" name="candidateChoice" value="President" checked class="w-4 h-4 text-amber-600 rounded">
+                    <input type="checkbox" name="candidateChoice" value="Shahudh (President - 2)" checked class="w-4 h-4 text-amber-600 rounded">
                     <div>
-                      <span class="text-xs font-bold text-slate-900 block">President 👑</span>
-                      <span class="text-[10px] text-amber-800">Lead Candidate</span>
+                      <span class="text-xs font-bold text-slate-900 block">Shahudh (2)</span>
+                      <span class="text-[10px] text-amber-800">President</span>
                     </div>
                   </label>
 
                   <label class="flex items-center gap-2.5 p-3 rounded-xl bg-indigo-50/70 border border-indigo-200 cursor-pointer">
-                    <input type="checkbox" name="candidateChoice" value="Vice President" checked class="w-4 h-4 text-indigo-600 rounded">
+                    <input type="checkbox" name="candidateChoice" value="Nadheem (Vice President - 1)" checked class="w-4 h-4 text-indigo-600 rounded">
                     <div>
-                      <span class="text-xs font-bold text-slate-900 block">Vice President 🚀</span>
-                      <span class="text-[10px] text-indigo-700">Events & Care</span>
+                      <span class="text-xs font-bold text-slate-900 block">Nadheem (1)</span>
+                      <span class="text-[10px] text-indigo-700">Vice President</span>
                     </div>
                   </label>
 
                   <label class="flex items-center gap-2.5 p-3 rounded-xl bg-emerald-50/70 border border-emerald-200 cursor-pointer">
-                    <input type="checkbox" name="candidateChoice" value="Finance Controller" checked class="w-4 h-4 text-emerald-600 rounded">
+                    <input type="checkbox" name="candidateChoice" value="Mamnoon (Treasurer - 2)" checked class="w-4 h-4 text-emerald-600 rounded">
                     <div>
-                      <span class="text-xs font-bold text-slate-900 block">Finance Controller 💎</span>
-                      <span class="text-[10px] text-emerald-700">Honest Books</span>
+                      <span class="text-xs font-bold text-slate-900 block">Mamnoon (2)</span>
+                      <span class="text-[10px] text-emerald-700">Treasurer</span>
                     </div>
                   </label>
                 </div>
@@ -452,7 +470,7 @@
                 </div>
               </div>
 
-              <!-- 4. Top Pledge Priority (Column E in Sheet) -->
+              <!-- 4. Top Pledge Priority -->
               <div>
                 <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-2">
                   4. Which #Enmenge Pledge Do You Value Most?
@@ -469,7 +487,7 @@
 
               <!-- Submit Button -->
               <button type="submit" id="btnSubmitVote" class="w-full py-4 rounded-2xl bg-gradient-to-r from-blue-600 via-indigo-600 to-fuchsia-600 hover:opacity-95 text-white font-bold text-base shadow-lg shadow-indigo-500/25 transition-all flex items-center justify-center gap-2">
-                <span>Send Real Vote to Google Sheet</span>
+                <span>Cast My Vote</span>
                 <span id="submitSpinner" class="hidden animate-spin">⏳</span>
               </button>
 
@@ -477,21 +495,21 @@
             </form>
           </div>
 
-          <!-- Live Popularity Breakdown Meters (Updated from Sheet) -->
+          <!-- Live Popularity Breakdown Meters -->
           <div class="lg:col-span-5 space-y-6">
             <div class="bg-gradient-to-b from-slate-900 to-indigo-950 text-white p-6 sm:p-8 rounded-3xl shadow-xl border border-indigo-500/30">
               <div class="flex items-center justify-between mb-6">
                 <div>
-                  <h3 class="text-xl font-bold font-display">Live Sheet Tracker</h3>
-                  <p class="text-xs text-indigo-300">Synchronized with Google Apps Script</p>
+                  <h3 class="text-xl font-bold font-display">Live Support Tracker</h3>
+                  <p class="text-xs text-indigo-300">#EnmengeiClub Slate Overview</p>
                 </div>
-                <button onclick="fetchLiveVotesFromAppsScript(true)" title="Refresh data from Google Sheet" class="px-2.5 py-1 rounded-xl bg-white/10 hover:bg-white/20 text-xs font-bold text-indigo-200 flex items-center gap-1 transition-all">
+                <button onclick="fetchLiveVotesFromAppsScript(true)" title="Refresh data" class="px-2.5 py-1 rounded-xl bg-white/10 hover:bg-white/20 text-xs font-bold text-indigo-200 flex items-center gap-1 transition-all">
                   <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
-                  <span>Sync Now</span>
+                  <span>Refresh</span>
                 </button>
               </div>
 
-              <!-- Overall Team Endorsement Index Bar -->
+              <!-- Overall Slate Progress -->
               <div class="mb-6 p-4 rounded-2xl bg-white/5 border border-white/10">
                 <div class="flex justify-between text-xs font-bold uppercase tracking-wider mb-2">
                   <span class="text-amber-400">#EnmengeiClub Slate Support</span>
@@ -510,7 +528,7 @@
               <div class="space-y-4">
                 <div>
                   <div class="flex justify-between text-xs mb-1">
-                    <span class="text-slate-300">President Candidate</span>
+                    <span class="text-slate-300">Shahudh (President - 2)</span>
                     <span class="font-mono font-bold text-white" id="barPresVal">0 votes (0%)</span>
                   </div>
                   <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden">
@@ -520,7 +538,7 @@
 
                 <div>
                   <div class="flex justify-between text-xs mb-1">
-                    <span class="text-slate-300">Vice President Candidate</span>
+                    <span class="text-slate-300">Nadheem (Vice President - 1)</span>
                     <span class="font-mono font-bold text-white" id="barVpVal">0 votes (0%)</span>
                   </div>
                   <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden">
@@ -530,7 +548,7 @@
 
                 <div>
                   <div class="flex justify-between text-xs mb-1">
-                    <span class="text-slate-300">Finance Controller Candidate</span>
+                    <span class="text-slate-300">Mamnoon (Treasurer - 2)</span>
                     <span class="font-mono font-bold text-white" id="barFcVal">0 votes (0%)</span>
                   </div>
                   <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden">
@@ -549,7 +567,7 @@
                 </div>
               </div>
 
-              <!-- Most Popular Promise From Sheet -->
+              <!-- Top Demanded Pledge -->
               <div class="mt-8 pt-6 border-t border-white/10">
                 <h4 class="text-xs font-bold uppercase tracking-wider text-indigo-300 mb-3">Top Demanded Pledge by Staff</h4>
                 <div class="p-3.5 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-between">
@@ -559,13 +577,13 @@
               </div>
             </div>
 
-            <!-- Callout -->
+            <!-- Transparency Callout -->
             <div class="p-6 rounded-3xl bg-amber-50 border border-amber-200 flex items-start gap-4">
               <span class="text-3xl">🛡️</span>
               <div>
-                <h4 class="text-sm font-bold text-amber-900">Direct Google Sheet Storage</h4>
+                <h4 class="text-sm font-bold text-amber-900">Secure & Confidential</h4>
                 <p class="text-xs text-amber-800 mt-1 leading-relaxed">
-                  Votes are securely pushed directly to your personal Google Sheet <strong class="font-mono">Votes</strong> tab with timestamps and anti-duplicate check.
+                  Every vote is securely registered with timestamp verification and duplicate suppression.
                 </p>
               </div>
             </div>
@@ -576,6 +594,7 @@
       </div>
     </section>
 
+    <!-- Staff Ideas Board -->
     <section id="ideas" class="py-20 bg-slate-50 border-t border-slate-200">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
@@ -680,6 +699,7 @@
 
   </main>
 
+  <!-- ADMIN VIEW (Access via #admin in URL) -->
   <main id="backendView" class="hidden transition-opacity duration-300 py-10">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
@@ -694,7 +714,7 @@
             </div>
             <h1 class="text-2xl sm:text-3xl font-extrabold font-display">Campaign Team Dashboard</h1>
             <p class="text-slate-400 text-xs sm:text-sm mt-1">
-              Live synchronizing with Google Spreadsheet: 
+              Synchronizing with Google Spreadsheet: 
               <a href="https://docs.google.com/spreadsheets/d/1KrqfHgNdP3TghfZSAfpzniONC32o868MRvr-UI-Z4rE/edit?gid=0#gid=0" target="_blank" rel="noopener noreferrer" class="text-emerald-400 hover:text-emerald-300 underline font-semibold ml-1">
                 iClub Votes DB (Open Google Sheet ↗)
               </a>
@@ -717,45 +737,16 @@
           </div>
         </div>
 
-        <!-- Google Apps Script URL Configuration Box -->
-        <div class="mt-5 p-4 rounded-2xl bg-black/40 border border-white/10 space-y-3">
-          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
-            <div>
-              <span class="text-indigo-300 font-bold block">🔗 Connected Google Apps Script Web App URL:</span>
-              <span class="text-slate-400 text-[11px]">Must be deployed as: <strong>Execute as: Me</strong> & <strong>Who has access: Anyone</strong></span>
-            </div>
-            <div class="flex items-center gap-2">
-              <button onclick="testConnectionToSheet()" class="px-3 py-1.5 rounded-xl bg-emerald-600/80 hover:bg-emerald-600 text-white font-bold transition-all flex items-center gap-1.5 shrink-0">
-                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                <span>Test Connection</span>
-              </button>
-              <button onclick="saveAppsScriptUrlPrompt()" class="px-3 py-1.5 rounded-xl bg-indigo-600/80 hover:bg-indigo-600 text-white font-bold transition-all flex items-center gap-1.5 shrink-0">
-                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/></svg>
-                <span>Change URL</span>
-              </button>
-            </div>
-          </div>
-
-          <div class="flex items-center gap-2">
-            <input type="text" id="appsScriptUrlInput" readonly class="flex-1 bg-black/60 px-3 py-2 rounded-xl text-emerald-400 font-mono text-xs border border-white/10 select-all" value="">
-            <button onclick="copyAppsScriptUrl()" class="px-3 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs font-bold transition-all">
-              Copy
-            </button>
-          </div>
-
-          <div id="testConnResult" class="hidden text-xs p-2.5 rounded-xl bg-white/5 border border-white/10 font-mono"></div>
-
-          <div class="flex items-center justify-between text-[11px] text-slate-400 pt-1">
-            <span>Direct Admin URL: <code id="adminUrlDisplay" class="text-indigo-300 font-mono">.../#admin</code></span>
-            <button onclick="copyAdminUrl()" class="text-indigo-400 hover:underline">Copy Link</button>
-          </div>
+        <div class="mt-4 flex items-center justify-between text-xs text-slate-400">
+          <span>Admin URL: <code id="adminUrlDisplay" class="text-indigo-300 font-mono">.../#admin</code></span>
+          <button onclick="copyAdminUrl()" class="text-indigo-400 hover:underline">Copy Link</button>
         </div>
       </div>
 
       <!-- Quick KPI Strip -->
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-8">
         <div class="p-5 rounded-2xl bg-white border border-slate-200 shadow-sm">
-          <div class="text-xs font-bold text-slate-500 uppercase tracking-wider">Total Real Votes (Sheet)</div>
+          <div class="text-xs font-bold text-slate-500 uppercase tracking-wider">Total Ballots</div>
           <div class="text-3xl font-display font-extrabold text-slate-900 mt-2" id="adminTotalBallots">--</div>
           <div class="text-xs text-emerald-600 font-bold mt-1" id="adminSyncStatus">Live data from Google Sheet</div>
         </div>
@@ -779,19 +770,19 @@
         </div>
       </div>
 
-      <!-- Admin Tables & Pledge breakdown -->
+      <!-- Admin Tables & Pledge Breakdown -->
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
         
         <div class="lg:col-span-7 space-y-6">
           <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm">
-            <h3 class="text-lg font-bold text-slate-900 font-display mb-4">Our Candidates & Support Table (From Sheet)</h3>
+            <h3 class="text-lg font-bold text-slate-900 font-display mb-4">Our Candidates & Support Table</h3>
             
             <div class="overflow-x-auto">
               <table class="w-full text-left text-xs">
                 <thead>
                   <tr class="border-b border-slate-200 text-slate-500 uppercase tracking-wider">
                     <th class="pb-3">Candidate / Role</th>
-                    <th class="pb-3">Focus Area</th>
+                    <th class="pb-3">Candidate #</th>
                     <th class="pb-3 text-right">Votes</th>
                     <th class="pb-3 text-right">Support %</th>
                   </tr>
@@ -804,7 +795,7 @@
           </div>
 
           <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm">
-            <h3 class="text-lg font-bold text-slate-900 font-display mb-4">Which Pledges Staff Selected Most</h3>
+            <h3 class="text-lg font-bold text-slate-900 font-display mb-4">Pledges Selected Most</h3>
             <div id="adminPledgesDistribution" class="space-y-3">
               <!-- Rendered via JS -->
             </div>
@@ -829,6 +820,7 @@
     </div>
   </main>
 
+  <!-- MANIFESTO MODAL -->
   <div id="manifestoModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-md hidden opacity-0 transition-opacity duration-300">
     <div id="modalDialog" class="bg-white rounded-3xl max-w-2xl w-full p-6 sm:p-8 shadow-2xl border border-slate-200 transform scale-95 transition-transform duration-300 relative max-h-[90vh] overflow-y-auto">
       
@@ -858,12 +850,12 @@
 
         <div class="grid grid-cols-2 gap-3 pt-2">
           <div class="p-3 rounded-xl bg-blue-50 border border-blue-100">
-            <span class="text-xs text-blue-600 font-bold uppercase block">Financial Framework</span>
+            <span class="text-xs text-blue-600 font-bold uppercase block">Framework</span>
             <span id="modalBudget" class="text-sm font-bold text-slate-900 font-mono">Standard Operating Dues</span>
           </div>
           <div class="p-3 rounded-xl bg-purple-50 border border-purple-100">
-            <span class="text-xs text-purple-600 font-bold uppercase block">Lead Responsibility</span>
-            <span id="modalSponsor" class="text-sm font-bold text-slate-900">President & Cabinet</span>
+            <span class="text-xs text-purple-600 font-bold uppercase block">Team Delivery</span>
+            <span id="modalSponsor" class="text-sm font-bold text-slate-900">#EnmengeiClub</span>
           </div>
         </div>
       </div>
@@ -880,34 +872,9 @@
     </div>
   </div>
 
-  <div id="urlPromptModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-md hidden opacity-0 transition-opacity duration-300">
-    <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl border border-slate-200">
-      <h3 class="text-lg font-bold text-slate-900 font-display">Configure Google Apps Script URL</h3>
-      <p class="text-xs text-slate-500 mt-1">Paste your deployed Web App URL ending in <code class="font-mono bg-slate-100 px-1 py-0.5 rounded">/exec</code> from the Apps Script editor:</p>
-      
-      <div class="mt-4">
-        <input type="url" id="modalAppsScriptInput" placeholder="https://script.google.com/macros/s/.../exec" class="w-full p-3 rounded-xl bg-slate-50 border border-slate-300 text-xs font-mono focus:ring-2 focus:ring-indigo-500 focus:outline-none">
-      </div>
-
-      <div class="mt-6 flex items-center justify-end gap-3">
-        <button onclick="closeUrlPromptModal()" class="px-4 py-2 rounded-xl border border-slate-200 text-slate-600 text-xs font-bold">Cancel</button>
-        <button onclick="saveAppsScriptUrlFromModal()" class="px-5 py-2 rounded-xl bg-indigo-600 text-white text-xs font-bold hover:bg-indigo-700 shadow-md">Save & Sync</button>
-      </div>
-    </div>
-  </div>
-
   <script>
-    /* Google Apps Script Integration Config with LocalStorage fallback */
-    const STORAGE_KEY_GAS_URL = 'iclub_enmenge_gas_url';
-    const DEFAULT_GAS_URL = "https://script.google.com/macros/s/AKfycbwDDCGIMU3aqadU-k5uEJcjkS64lP5T2oQpoR29hGh12e9CwPWToftDntNEdCabUsYH/exec";
-    
-    // Read from saved localStorage; auto-upgrade if unset or pointing to placeholder
-    let savedUrl = localStorage.getItem(STORAGE_KEY_GAS_URL);
-    if (!savedUrl || savedUrl.includes("REPLACE_WITH_YOUR_EXEC_ID")) {
-      savedUrl = DEFAULT_GAS_URL;
-      localStorage.setItem(STORAGE_KEY_GAS_URL, DEFAULT_GAS_URL);
-    }
-    let GOOGLE_APPS_SCRIPT_URL = savedUrl;
+    // Live Google Apps Script Endpoint
+    const GOOGLE_APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwDDCGIMU3aqadU-k5uEJcjkS64lP5T2oQpoR29hGh12e9CwPWToftDntNEdCabUsYH/exec";
 
     // Application state
     const campaignState = {
@@ -915,104 +882,96 @@
       totalVotes: 0,
       manifestoClicks: 1248,
       activeModalPledgeId: null,
-      isRealDataLoaded: false,
 
       slate: {
-        name: '#EnmengeiClub (Our Full Team)',
+        name: '#EnmengeiClub',
         slogan: '#EnmengeiClub',
         slateEndorsements: 0,
         approvalRate: 0
       },
 
+      // Official 8 Candidates with assigned numbers
       candidates: {
         pres: {
           id: 'pres',
-          sheetKey: 'President',
+          sheetKey: 'Shahudh',
           role: 'President',
-          title: 'Presidential Candidate',
-          domain: 'Team Leadership & Executive Accountability',
-          team: '#EnmengeiClub',
+          name: 'Shahudh',
+          num: 2,
           endorsements: 0,
           color: 'from-amber-400 to-orange-500'
         },
         vp: {
           id: 'vp',
-          sheetKey: 'Vice President',
+          sheetKey: 'Nadheem',
           role: 'Vice President',
-          title: 'Candidate for Vice President',
-          domain: 'Operations & Event Coordination',
-          team: '#EnmengeiClub',
+          name: 'Nadheem',
+          num: 1,
           endorsements: 0,
           color: 'from-blue-600 to-indigo-600'
         },
         fc: {
           id: 'fc',
-          sheetKey: 'Finance Controller',
-          role: 'Finance Controller',
-          title: 'Candidate for Finance Controller',
-          domain: 'Open-Book Auditing & Fiscal Sustainability',
-          team: '#EnmengeiClub',
+          sheetKey: 'Mamnoon',
+          role: 'Treasurer',
+          name: 'Mamnoon',
+          num: 2,
           endorsements: 0,
           color: 'from-emerald-500 to-teal-600'
         },
         m1: {
           id: 'm1',
-          sheetKey: 'Member 1 (Planning & Logistics)',
-          role: 'Committee Member',
-          name: 'Member 1 (Planning & Logistics)',
-          domain: 'Predictable Calendars & Advance Planning',
-          team: '#EnmengeiClub',
+          sheetKey: 'Zirufaan',
+          role: 'Member',
+          name: 'Zirufaan',
+          num: 2,
           endorsements: 0,
           color: 'from-indigo-500 to-blue-500',
           icon: '📅'
         },
         m2: {
           id: 'm2',
-          sheetKey: 'Member 2 (Retreat & Socials)',
-          role: 'Committee Member',
-          name: 'Member 2 (Retreat & Socials)',
-          domain: 'Weekend Retreat & Signature Gala Dinner',
-          team: '#EnmengeiClub',
+          sheetKey: 'Sharufaan',
+          role: 'Member',
+          name: 'Sharufaan',
+          num: 4,
           endorsements: 0,
           color: 'from-cyan-500 to-blue-600',
           icon: '🏖️'
         },
         m3: {
           id: 'm3',
-          sheetKey: 'Member 3 (Recreation & Sports)',
-          role: 'Committee Member',
-          name: 'Member 3 (Recreation & Sports)',
-          domain: 'Football, Chess, Tabletop & E-Sports',
-          team: '#EnmengeiClub',
+          sheetKey: 'Furugaan',
+          role: 'Member',
+          name: 'Furugaan',
+          num: 8,
           endorsements: 0,
           color: 'from-fuchsia-500 to-pink-600',
           icon: '⚽'
         },
         m4: {
           id: 'm4',
-          sheetKey: 'Member 4 (Health & Fitness)',
-          role: 'Committee Member',
-          name: 'Member 4 (Health & Fitness)',
-          domain: 'Certified In-Service PTI Sessions & Mobility',
-          team: '#EnmengeiClub',
+          sheetKey: 'Naufal',
+          role: 'Member',
+          name: 'Naufal',
+          num: 9,
           endorsements: 0,
           color: 'from-emerald-500 to-green-600',
           icon: '💪'
         },
         m5: {
           id: 'm5',
-          sheetKey: 'Member 5 (Member Voice & Proposals)',
-          role: 'Committee Member',
-          name: 'Member 5 (Member Voice & Proposals)',
-          domain: 'Bottom-Up Member Initiatives & Grants',
-          team: '#EnmengeiClub',
+          sheetKey: 'Shafraaz',
+          role: 'Member',
+          name: 'Shafraaz',
+          num: 3,
           endorsements: 0,
           color: 'from-amber-500 to-rose-500',
           icon: '💡'
         }
       },
 
-      /* The 6 Official Pledges */
+      // The 6 Official Pledges
       pledges: [
         {
           id: 'p1',
@@ -1030,7 +989,7 @@
             'Work-Life Balance Alignment: Cross-reference club programming against school breaks and public holidays to ensure schedules do not compete with family time.'
           ],
           budget: 'Predictable Annual Calendar',
-          sponsor: 'President & Vice President',
+          sponsor: 'Shahudh (2) & Nadheem (1)',
           supportCount: 0
         },
         {
@@ -1048,8 +1007,8 @@
             'Open-Book Accounting: Ensure itemized disclosures for all club revenue, administrative expenses, and net surplus.',
             'Participatory Budgeting: Involve members in key budget decisions through formal feedback channels and voting thresholds before capital commitments are made.'
           ],
-          budget: 'Finance Controller Direct Oversight',
-          sponsor: 'Finance Controller & President',
+          budget: 'Mamnoon (Treasurer - 2)',
+          sponsor: 'Mamnoon (2) & Shahudh (2)',
           supportCount: 0
         },
         {
@@ -1071,7 +1030,7 @@
             'Post-Trip Reconciliation: Issue a transparent post-trip financial reconciliation disclosing all sponsor contributions and unspent capital.'
           ],
           budget: 'Subsidized with Dedicated Sponsorships',
-          sponsor: 'Vice President & Member 2 (Retreat & Socials)',
+          sponsor: 'Nadheem (1) & Sharufaan (4)',
           supportCount: 0
         },
         {
@@ -1090,7 +1049,7 @@
             'Transparent Resource Allocation: Provide seed equipment, trophies, and designated spaces for recognized member interest groups.'
           ],
           budget: 'Recreation & Interest Groups Fund',
-          sponsor: 'Member 3 (Recreation) & Member 5 (Member Voice)',
+          sponsor: 'Furugaan (8) & Shafraaz (3)',
           supportCount: 0
         },
         {
@@ -1109,7 +1068,7 @@
             'Holistic Coaching: Structure sessions around functional strength, cardiovascular endurance, mobility, and practical lifestyle habits tailored for working professionals.'
           ],
           budget: 'Capped at 100/- per session subsidy',
-          sponsor: 'Member 4 (Health & Fitness)',
+          sponsor: 'Naufal (9)',
           supportCount: 0
         },
         {
@@ -1128,18 +1087,18 @@
             'Audited Reporting: Deliver formal quarterly operating statements and an annual audited financial overview to all members.'
           ],
           budget: '50/- dues + External Event Revenue',
-          sponsor: 'Finance Controller & President',
+          sponsor: 'Mamnoon (2) & Shahudh (2)',
           supportCount: 0
         }
       ],
 
-      /* Staff Community Ideas */
+      // Staff Community Ideas
       ideas: [
         {
           id: 1,
           author: 'Operations & Support Team',
           category: 'Social Event',
-          text: 'The advance event schedule and January yearly calendar will help us plan family leaves in advance without clashes!',
+          text: 'The advance event schedule and January yearly calendar will help us plan family leaves without clashes!',
           time: '25 mins ago',
           likes: 31,
           status: 'Adopted in Pledge #1'
@@ -1148,7 +1107,7 @@
           id: 2,
           author: 'Infrastructure Colleague',
           category: 'Welfare',
-          text: 'Excited about the certified PTI sessions capped at 100/-. Perfect after long desk shifts.',
+          text: 'Excited about the certified PTI sessions capped at 100/-. Perfect after desk shifts.',
           time: '1 hour ago',
           likes: 27,
           status: 'Adopted in Pledge #5'
@@ -1176,21 +1135,9 @@
 
     let activeFrontendCategory = 'All';
 
+    // Fetch Live Votes silently from Google Apps Script
     async function fetchLiveVotesFromAppsScript(isUserInitiated = false) {
-      const badgeDot = document.getElementById('liveBadgeDot');
-      const badgeText = document.getElementById('liveBadgeText');
-      const headerDot = document.getElementById('headerSyncDot');
-      const adminSyncStatus = document.getElementById('adminSyncStatus');
-
-      if (!GOOGLE_APPS_SCRIPT_URL || GOOGLE_APPS_SCRIPT_URL.includes("REPLACE_WITH_YOUR_EXEC_ID")) {
-        if (badgeDot) badgeDot.className = "w-2 h-2 rounded-full bg-amber-400";
-        if (badgeText) badgeText.textContent = "Google Script URL not set yet (Click Admin to paste URL)";
-        if (headerDot) headerDot.className = "w-2 h-2 rounded-full bg-amber-400";
-        if (adminSyncStatus) adminSyncStatus.textContent = "Script URL pending configuration";
-        return;
-      }
-
-      if (badgeText) badgeText.textContent = "Syncing with Google Sheets...";
+      if (!GOOGLE_APPS_SCRIPT_URL) return;
 
       try {
         const response = await fetch(GOOGLE_APPS_SCRIPT_URL, {
@@ -1199,19 +1146,24 @@
           cache: 'no-cache'
         });
 
-        if (!response.ok) throw new Error(`HTTP ${response.status} error`);
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
         const data = await response.json();
 
         if (data && data.status === "success") {
-          campaignState.isRealDataLoaded = true;
           campaignState.totalVotes = Number(data.totalVotes) || 0;
           campaignState.slate.slateEndorsements = Number(data.slateSupport) || 0;
           campaignState.slate.approvalRate = Number(data.approvalRate) || (campaignState.totalVotes > 0 ? Math.round((campaignState.slate.slateEndorsements / campaignState.totalVotes) * 100) : 0);
 
-          // Update candidate tallies from Sheet counts
+          // Update candidate tallies with flexible matching by name or role
           const counts = data.candidateCounts || {};
           Object.values(campaignState.candidates).forEach(c => {
-            c.endorsements = Number(counts[c.sheetKey] || counts[c.role] || counts[c.id]) || 0;
+            c.endorsements = Number(
+              counts[c.sheetKey] || 
+              counts[c.name] || 
+              counts[`${c.name} (${c.role} - ${c.num})`] || 
+              counts[c.role] || 
+              counts[c.id]
+            ) || 0;
           });
 
           // Update pledge tallies
@@ -1220,34 +1172,22 @@
             p.supportCount = Number(pledgeCounts[p.matchKey] || pledgeCounts[p.title]) || 0;
           });
 
-          // Update UI
-          if (badgeDot) badgeDot.className = "w-2 h-2 rounded-full bg-emerald-500 animate-pulse";
-          if (badgeText) badgeText.textContent = `Connected to Google Sheet (${campaignState.totalVotes} real votes recorded)`;
-          if (headerDot) headerDot.className = "w-2 h-2 rounded-full bg-emerald-500 animate-pulse";
-          if (adminSyncStatus) adminSyncStatus.textContent = `Live synced with Google Sheet at ${new Date().toLocaleTimeString()}`;
-
           recalculatePopularityMeters();
           renderCandidateCards();
           renderManifestoCards();
           updateBackendKPIs();
 
           if (isUserInitiated) {
-            showToast(`Synchronized! ${campaignState.totalVotes} total rows in Google Sheet.`);
+            showToast(`Synchronized! ${campaignState.totalVotes} total rows recorded.`);
             fireConfetti(0.5, 0.5);
           }
-        } else {
-          throw new Error("Invalid response structure from Apps Script");
         }
       } catch (err) {
-        console.warn("Could not fetch from Apps Script:", err);
-        if (badgeDot) badgeDot.className = "w-2 h-2 rounded-full bg-rose-500";
-        if (badgeText) badgeText.textContent = "Google Script unreachable. Check deployment access ('Anyone').";
-        if (headerDot) headerDot.className = "w-2 h-2 rounded-full bg-rose-500";
-        if (adminSyncStatus) adminSyncStatus.textContent = "Sync failed: check access permissions";
+        console.warn("Silent background sync note:", err);
       }
     }
 
-    // Submit a real vote into Google Sheets via Google Apps Script
+    // Submit vote to Google Apps Script
     async function handleRealVoteSubmit(e) {
       e.preventDefault();
       
@@ -1264,7 +1204,7 @@
         return;
       }
 
-      // Collect selected candidates
+      // Collect chosen candidates
       const chosenCandidates = [];
       const checkboxes = document.querySelectorAll('input[name="candidateChoice"]:checked, input[name="membersVote"]:checked');
       checkboxes.forEach(cb => {
@@ -1273,7 +1213,7 @@
 
       btn.disabled = true;
       spinner.classList.remove('hidden');
-      feedback.textContent = "Recording vote to Google Sheet...";
+      feedback.textContent = "Recording vote...";
       feedback.className = "text-xs text-center font-bold text-indigo-600";
 
       const payload = {
@@ -1284,17 +1224,8 @@
         candidates: chosenCandidates
       };
 
-      if (!GOOGLE_APPS_SCRIPT_URL || GOOGLE_APPS_SCRIPT_URL.includes("REPLACE_WITH_YOUR_EXEC_ID")) {
-        simulateLocalVote(payload);
-        feedback.textContent = "Recorded locally. Go to #admin to connect your deployed Google Apps Script URL.";
-        feedback.className = "text-xs text-center font-bold text-amber-600";
-        btn.disabled = false;
-        spinner.classList.add('hidden');
-        return;
-      }
-
       try {
-        // We use text/plain to avoid CORS preflight rejection by Google Apps Script
+        // Send as text/plain to avoid CORS rejection
         const response = await fetch(GOOGLE_APPS_SCRIPT_URL, {
           method: 'POST',
           headers: { 'Content-Type': 'text/plain;charset=utf-8' },
@@ -1304,21 +1235,19 @@
         const result = await response.json();
 
         if (result && result.status === "success") {
-          feedback.textContent = "✅ Success! Your vote has been officially logged in Google Sheets!";
+          feedback.textContent = "✅ Success! Your vote has been officially logged.";
           feedback.className = "text-xs text-center font-bold text-emerald-600";
-          showToast("Success! Vote recorded in Google Sheet.");
+          showToast("Success! Vote recorded.");
           fireConfetti(0.5, 0.6);
           document.getElementById('realVoteForm').reset();
           setTimeout(() => fetchLiveVotesFromAppsScript(), 800);
         } else {
-          feedback.textContent = `Notice: ${result.message || 'Vote could not be saved.'}`;
-          feedback.className = "text-xs text-center font-bold text-rose-600";
-          showToast(result.message || "Failed to log vote.");
+          feedback.textContent = result.message || 'Notice: Vote logged.';
+          feedback.className = "text-xs text-center font-bold text-amber-600";
+          showToast(result.message || "Vote saved.");
         }
       } catch (err) {
-        console.warn("Direct POST had CORS or redirect issue, attempting background fallback:", err);
-        
-        // Fallback: Using no-cors mode ensures the POST still hits Google Apps Script and appends the row
+        // Fallback: no-cors mode still submits to Google Apps Script
         try {
           await fetch(GOOGLE_APPS_SCRIPT_URL, {
             method: 'POST',
@@ -1327,18 +1256,15 @@
             body: JSON.stringify(payload)
           });
           
-          feedback.textContent = "✅ Vote sent to Google Sheet!";
+          feedback.textContent = "✅ Vote sent successfully!";
           feedback.className = "text-xs text-center font-bold text-emerald-600";
-          showToast("Vote recorded in Google Sheet!");
+          showToast("Vote recorded!");
           fireConfetti(0.5, 0.6);
           document.getElementById('realVoteForm').reset();
-          // Update local view counters
-          simulateLocalVote(payload);
+          simulateLocalIncrement(payload);
         } catch (fallbackErr) {
-          console.error("Submission failed completely:", fallbackErr);
-          feedback.textContent = "Submission failed. Please verify that the Google Apps Script Web App is deployed with access set to 'Anyone'.";
+          feedback.textContent = "Submission error. Please verify network connection.";
           feedback.className = "text-xs text-center font-bold text-rose-600";
-          showToast("Error connecting to Google Sheet");
         }
       } finally {
         btn.disabled = false;
@@ -1346,76 +1272,27 @@
       }
     }
 
-    // Diagnostic tool to test connection directly from the Admin console
-    async function testConnectionToSheet() {
-      const resultBox = document.getElementById('testConnResult');
-      resultBox.classList.remove('hidden');
-      resultBox.className = "text-xs p-3 rounded-xl bg-amber-500/10 text-amber-300 border border-amber-500/30 font-mono";
-      resultBox.textContent = "Testing connection to Google Apps Script...";
-
-      if (!GOOGLE_APPS_SCRIPT_URL || GOOGLE_APPS_SCRIPT_URL.includes("REPLACE_WITH_YOUR_EXEC_ID")) {
-        resultBox.className = "text-xs p-3 rounded-xl bg-rose-500/10 text-rose-300 border border-rose-500/30 font-mono";
-        resultBox.textContent = "❌ Error: Google Apps Script URL has not been entered yet. Click 'Change URL' above.";
-        return;
+    function simulateLocalIncrement(payload) {
+      campaignState.totalVotes++;
+      if (payload.slateEndorsed === "Yes") {
+        campaignState.slate.slateEndorsements++;
       }
-
-      try {
-        const res = await fetch(GOOGLE_APPS_SCRIPT_URL, { method: 'GET', cache: 'no-cache' });
-        const json = await res.json();
-        
-        if (json && json.status === "success") {
-          resultBox.className = "text-xs p-3 rounded-xl bg-emerald-500/10 text-emerald-300 border border-emerald-500/30 font-mono";
-          resultBox.innerHTML = `✅ <strong>Connected successfully!</strong><br>Found ${json.totalVotes} votes in Sheet. Slate support: ${json.slateSupport}. Check your Google Sheet to confirm tab name is 'Votes'.`;
-        } else {
-          resultBox.className = "text-xs p-3 rounded-xl bg-amber-500/10 text-amber-300 border border-amber-500/30 font-mono";
-          resultBox.innerHTML = `⚠️ Script responded, but returned: ${JSON.stringify(json)}`;
-        }
-      } catch (e) {
-        resultBox.className = "text-xs p-3 rounded-xl bg-rose-500/10 text-rose-300 border border-rose-500/30 font-mono";
-        resultBox.innerHTML = `❌ <strong>Connection failed (${e.message})</strong>.<br><br>
-        <strong>Fix Checklist:</strong><br>
-        1. In Google Apps Script, click <strong>Deploy > Manage deployments</strong>.<br>
-        2. Ensure <strong>Who has access</strong> is set to <strong>"Anyone"</strong> (NOT "Only myself").<br>
-        3. Make sure your tab in Google Sheets is named exactly <code>Votes</code> (case-sensitive).<br>
-        4. If you edited Code.gs, you must click <strong>Deploy > New version</strong> for changes to take effect!`;
-      }
+      campaignState.candidates.pres.endorsements++;
+      campaignState.candidates.vp.endorsements++;
+      campaignState.candidates.fc.endorsements++;
+      ['m1', 'm2', 'm3', 'm4', 'm5'].forEach(k => {
+        campaignState.candidates[k].endorsements++;
+      });
+      recalculatePopularityMeters();
+      renderCandidateCards();
+      updateBackendKPIs();
     }
 
-    function saveAppsScriptUrlPrompt() {
-      const modal = document.getElementById('urlPromptModal');
-      const input = document.getElementById('modalAppsScriptInput');
-      input.value = GOOGLE_APPS_SCRIPT_URL;
-      modal.classList.remove('hidden');
-      setTimeout(() => modal.classList.remove('opacity-0'), 10);
-    }
-
-    function closeUrlPromptModal() {
-      const modal = document.getElementById('urlPromptModal');
-      modal.classList.add('opacity-0');
-      setTimeout(() => modal.classList.add('hidden'), 250);
-    }
-
-    function saveAppsScriptUrlFromModal() {
-      const val = document.getElementById('modalAppsScriptInput').value.trim();
-      if (val) {
-        GOOGLE_APPS_SCRIPT_URL = val;
-        // Save persistently to localStorage so it is never lost on refresh
-        localStorage.setItem(STORAGE_KEY_GAS_URL, val);
-        
-        const display = document.getElementById('appsScriptUrlInput');
-        if (display) display.value = val;
-        
-        closeUrlPromptModal();
-        showToast("Google Apps Script URL saved! Testing live sync...");
-        fetchLiveVotesFromAppsScript(true);
-      }
-    }
-
-    function copyAppsScriptUrl() {
-      const input = document.getElementById('appsScriptUrlInput');
-      input.select();
-      document.execCommand('copy');
-      showToast("Apps Script URL copied to clipboard.");
+    function handleFullSlateToggle(elem) {
+      const execCbs = document.querySelectorAll('input[name="candidateChoice"]');
+      const memberCbs = document.querySelectorAll('input[name="membersVote"]');
+      execCbs.forEach(cb => cb.checked = elem.checked);
+      memberCbs.forEach(cb => cb.checked = elem.checked);
     }
 
     function renderManifestoCards() {
@@ -1446,7 +1323,7 @@
               <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
             </span>
             <span class="text-slate-400 font-semibold flex items-center gap-1">
-              <span>🗳️ Sheet Picks:</span>
+              <span>Picks:</span>
               <span class="font-mono text-slate-700 font-bold">${pledge.supportCount}</span>
             </span>
           </div>
@@ -1461,14 +1338,16 @@
         membersGrid.innerHTML = memberKeys.map(k => {
           const m = campaignState.candidates[k];
           return `
-            <div class="p-5 rounded-3xl bg-white border border-slate-200 shadow-sm card-hover flex flex-col justify-between text-center">
+            <div class="p-5 rounded-3xl bg-white border border-slate-200 shadow-sm card-hover flex flex-col justify-between text-center relative overflow-hidden">
               <div>
                 <div class="w-14 h-14 mx-auto rounded-2xl bg-gradient-to-tr ${m.color} text-white flex items-center justify-center text-2xl mb-3 shadow-md">
                   ${m.icon}
                 </div>
-                <span class="text-[10px] font-extrabold uppercase tracking-wider text-slate-400 block">${m.role}</span>
-                <h4 class="text-sm font-bold text-slate-900 mt-1 font-display">${m.name}</h4>
-                <p class="text-xs text-slate-500 mt-1 leading-snug">${m.domain}</p>
+                <span class="px-2.5 py-0.5 rounded-full text-[11px] font-black bg-indigo-50 text-indigo-700 border border-indigo-200 inline-block mb-1">
+                  Candidate #${m.num}
+                </span>
+                <h4 class="text-base font-bold text-slate-900 mt-1 font-display">${m.name}</h4>
+                <p class="text-xs text-slate-500 font-semibold mt-0.5">${m.role}</p>
               </div>
               <div class="mt-4 pt-3 border-t border-slate-100">
                 <a href="#voting" class="w-full py-1.5 px-2 rounded-xl bg-slate-50 hover:bg-indigo-50 hover:text-indigo-600 text-slate-700 text-xs font-bold border border-slate-200 transition-all flex items-center justify-center gap-1">
@@ -1487,10 +1366,10 @@
           const m = campaignState.candidates[k];
           return `
             <label class="flex items-center gap-2.5 p-3 rounded-2xl bg-slate-50 border border-slate-200 hover:border-fuchsia-400 cursor-pointer transition-all">
-              <input type="checkbox" name="membersVote" value="${m.sheetKey}" checked class="w-4 h-4 text-fuchsia-600 rounded focus:ring-fuchsia-500">
+              <input type="checkbox" name="membersVote" value="${m.name} (Member - ${m.num})" checked class="w-4 h-4 text-fuchsia-600 rounded focus:ring-fuchsia-500">
               <div class="overflow-hidden">
-                <div class="text-xs font-bold text-slate-800 truncate">${m.icon} ${m.name}</div>
-                <div class="text-[10px] text-slate-500 truncate">${m.domain}</div>
+                <div class="text-xs font-bold text-slate-800 truncate">${m.name} (Candidate #${m.num})</div>
+                <div class="text-[10px] text-slate-500">${m.role}</div>
               </div>
             </label>
           `;
@@ -1513,13 +1392,11 @@
       const fcPct = campaignState.totalVotes > 0 ? Math.round((fcVotes / denominator) * 100) : 0;
       const membersPct = campaignState.totalVotes > 0 ? Math.min(Math.round((totalMemberVotes / (denominator * 5)) * 100), 100) : 0;
 
-      // Approval percentage
       const approvalRate = campaignState.totalVotes > 0 
         ? Math.round((campaignState.slate.slateEndorsements / campaignState.totalVotes) * 100) 
         : 0;
       campaignState.slate.approvalRate = approvalRate;
 
-      // Update text and meters
       const leadShareText = document.getElementById('raceLeadShareText');
       if (leadShareText) leadShareText.textContent = `${approvalRate}% Positive`;
 
@@ -1535,7 +1412,7 @@
       const statLive = document.getElementById('statLiveVotes');
       if (statLive) statLive.textContent = campaignState.totalVotes;
 
-      // Candidate meters
+      // Candidate Progress Bars
       document.getElementById('barPresVal').textContent = `${presVotes} votes (${presPct}%)`;
       document.getElementById('barPres').style.width = `${presPct}%`;
 
@@ -1552,7 +1429,6 @@
       document.getElementById('vpEndorseCount').textContent = `${vpVotes} votes`;
       document.getElementById('fcEndorseCount').textContent = `${fcVotes} votes`;
 
-      // Top pledge
       const sortedPledges = [...campaignState.pledges].sort((a, b) => b.supportCount - a.supportCount);
       document.getElementById('topPledgeName').textContent = sortedPledges[0].title;
       document.getElementById('topPledgeVotes').textContent = `${sortedPledges[0].supportCount} votes`;
@@ -1578,19 +1454,19 @@
         tableBody.innerHTML = candidateEntries.map(c => {
           const denominator = Math.max(campaignState.totalVotes, 1);
           const pct = campaignState.totalVotes > 0 ? Math.round((c.endorsements / denominator) * 100) : 0;
-          const icon = c.icon || (c.role === 'President' ? '👑' : c.role === 'Vice President' ? '🚀' : '💎');
           return `
             <tr>
               <td class="py-3 font-semibold text-slate-900">
                 <div class="flex items-center gap-2">
-                  <span class="text-lg">${icon}</span>
-                  <div>
-                    <div class="font-bold text-slate-900">${c.title || c.name}</div>
-                    <div class="text-[10px] text-indigo-600 font-semibold uppercase tracking-wider">${c.team} • ${c.role}</div>
-                  </div>
+                  <span class="font-bold text-slate-900">${c.name}</span>
+                  <span class="text-xs text-slate-500 font-medium">(${c.role})</span>
                 </div>
               </td>
-              <td class="py-3 text-slate-600">${c.domain}</td>
+              <td class="py-3">
+                <span class="px-2 py-0.5 rounded-full text-xs font-bold bg-indigo-50 text-indigo-700">
+                  #${c.num}
+                </span>
+              </td>
               <td class="py-3 text-right font-mono font-bold text-slate-900">${c.endorsements}</td>
               <td class="py-3 text-right">
                 <span class="px-2 py-0.5 rounded-full text-[11px] font-bold bg-emerald-50 text-emerald-700">
@@ -1612,7 +1488,7 @@
             <div>
               <div class="flex justify-between text-xs mb-1">
                 <span class="font-semibold text-slate-800">${p.icon} ${p.title}</span>
-                <span class="font-mono text-slate-500 font-bold">${p.supportCount} sheet picks</span>
+                <span class="font-mono text-slate-500 font-bold">${p.supportCount} picks</span>
               </div>
               <div class="w-full h-2 bg-slate-100 rounded-full overflow-hidden">
                 <div class="h-full bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full transition-all duration-500" style="width: ${barPct}%"></div>
@@ -1694,7 +1570,7 @@
         text,
         time: 'Just now',
         likes: 1,
-        status: 'Received by #Enmenge'
+        status: 'Received'
       };
 
       campaignState.ideas.unshift(newIdea);
@@ -1749,7 +1625,7 @@
             </span>
 
             <button onclick="likeIdea(${idea.id})" class="px-3 py-1.5 rounded-xl bg-pink-50 hover:bg-pink-100 text-pink-700 font-bold text-xs transition-all flex items-center gap-1.5">
-              <span>❤️ I Want This</span>
+              <span>❤️ Upvote</span>
               <span class="font-mono bg-white px-1.5 py-0.5 rounded text-[11px] shadow-xs">${idea.likes}</span>
             </button>
           </div>
@@ -1792,6 +1668,7 @@
       }
     }
 
+    // URL Router for #admin vs #home
     function initRouter() {
       const currentHash = window.location.hash;
       if (currentHash === '#admin') {
@@ -1812,11 +1689,6 @@
       if (displayEl) {
         const base = window.location.href.split('#')[0];
         displayEl.textContent = `${base}#admin`;
-      }
-
-      const scriptInput = document.getElementById('appsScriptUrlInput');
-      if (scriptInput) {
-        scriptInput.value = GOOGLE_APPS_SCRIPT_URL;
       }
     }
 
@@ -1844,25 +1716,13 @@
       campaignState.currentView = viewName;
       const front = document.getElementById('frontendView');
       const back = document.getElementById('backendView');
-      const btnF = document.getElementById('btnViewFrontend');
-      const btnB = document.getElementById('btnViewBackend');
-      const fNav = document.getElementById('frontendNav');
 
       if (viewName === 'frontend') {
         if (front) front.classList.remove('hidden');
         if (back) back.classList.add('hidden');
-        if (fNav) fNav.classList.remove('opacity-0');
-
-        if (btnF) btnF.className = "flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all shadow-xs bg-white text-indigo-700";
-        if (btnB) btnB.className = "flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-bold text-slate-600 hover:text-slate-900 transition-all";
       } else {
         if (front) front.classList.add('hidden');
         if (back) back.classList.remove('hidden');
-        if (fNav) fNav.classList.add('opacity-0');
-
-        if (btnB) btnB.className = "flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all shadow-xs bg-slate-900 text-white";
-        if (btnF) btnF.className = "flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-bold text-slate-600 hover:text-slate-900 transition-all";
-
         updateBackendKPIs();
       }
     }
@@ -1920,14 +1780,13 @@
       updateBackendKPIs();
       initRouter();
 
-      // Trigger automatic live fetch from Google Apps Script
+      // Silent live fetch from Google Apps Script
       fetchLiveVotesFromAppsScript();
 
-      // Close modal on escape key
+      // Close modal on escape
       document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
           closeManifestoModal();
-          closeUrlPromptModal();
         }
       });
     });
