@@ -1,1 +1,1834 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>iClub 2026 | Digital Data & Technology Directorate Campaign</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            display: ['"Space Grotesk"', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#f0f5ff',
+              100: '#e0ebff',
+              200: '#c7d9fe',
+              500: '#3b82f6',
+              600: '#2563eb',
+              700: '#1d4ed8',
+              800: '#1e40af',
+              900: '#1e3a8a',
+            },
+            accent: {
+              cyan: '#06b6d4',
+              emerald: '#10b981',
+              amber: '#f59e0b',
+              fuchsia: '#d946ef',
+              rose: '#f43f5e',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .gradient-text {
+      background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 50%, #ec4899 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .neon-border {
+      box-shadow: 0 0 25px -5px rgba(99, 102, 241, 0.35);
+    }
+    .frosted-glass {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+    .dark .frosted-glass {
+      background: rgba(15, 23, 42, 0.85);
+    }
+    .radial-bg {
+      background: radial-gradient(circle at top right, rgba(59, 130, 246, 0.15), transparent 40%),
+                  radial-gradient(circle at bottom left, rgba(217, 70, 239, 0.15), transparent 45%);
+    }
+    .card-hover {
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .card-hover:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 30px -10px rgba(79, 70, 229, 0.2);
+    }
+    /* Hide scrollbar for tabs */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased font-sans transition-colors duration-300 min-h-screen radial-bg selection:bg-fuchsia-500 selection:text-white">
+
+  <!-- Top Navigation & View Switcher -->
+  <header class="sticky top-0 z-40 border-b border-slate-200/80 frosted-glass shadow-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        <!-- Brand Logo -->
+        <div class="flex items-center gap-3">
+          <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-blue-600 via-indigo-600 to-fuchsia-500 flex items-center justify-center text-white shadow-lg shadow-indigo-500/30 font-display font-bold text-xl tracking-wider">
+            <i>i</i>C
+          </div>
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="font-display font-bold text-xl tracking-tight text-slate-900">iClub 2026</span>
+              <span class="px-2.5 py-0.5 text-xs font-black tracking-wide rounded-full bg-gradient-to-r from-fuchsia-500/15 via-indigo-500/15 to-blue-500/15 text-fuchsia-700 border border-fuchsia-200">#EnmengeiClub</span>
+            </div>
+            <p class="text-xs text-slate-500 font-medium hidden sm:block">Our Staff Club • Team Enmenge</p>
+          </div>
+        </div>
+
+        <!-- Navigation Links (Frontend Mode) -->
+        <nav id="frontendNav" class="hidden md:flex items-center space-x-1 lg:space-x-3 text-sm font-semibold">
+          <a href="#vision" class="px-3 py-2 rounded-xl text-slate-600 hover:text-indigo-600 hover:bg-indigo-50/80 transition-all">Our Goals</a>
+          <a href="#manifesto" class="px-3 py-2 rounded-xl text-slate-600 hover:text-indigo-600 hover:bg-indigo-50/80 transition-all">6 Promises</a>
+          <a href="#team" class="px-3 py-2 rounded-xl text-slate-600 hover:text-indigo-600 hover:bg-indigo-50/80 transition-all">Our 8 Leaders</a>
+          <a href="#voting" class="px-3 py-2 rounded-xl text-slate-600 hover:text-indigo-600 hover:bg-indigo-50/80 transition-all">Support Poll</a>
+          <a href="#ideas" class="px-3 py-2 rounded-xl text-slate-600 hover:text-indigo-600 hover:bg-indigo-50/80 transition-all">Staff Ideas</a>
+        </nav>
+
+        <!-- View Switcher (Frontend / Backend Toggle with URL Route Support) -->
+        <div class="flex items-center gap-3">
+          <div class="bg-slate-200/80 p-1 rounded-2xl flex items-center shadow-inner border border-slate-300/60">
+            <button id="btnViewFrontend" onclick="navigateToRoute('home')" class="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all shadow-xs bg-white text-indigo-700">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+              <span>Campaign</span>
+            </button>
+            <button id="btnViewBackend" onclick="navigateToRoute('admin')" class="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-bold text-slate-600 hover:text-slate-900 transition-all">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+              <span>Admin (#admin)</span>
+              <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+            </button>
+          </div>
+
+          <a href="#voting" class="hidden sm:inline-flex items-center justify-center px-4 py-2 text-xs font-bold uppercase tracking-wider text-white bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 rounded-xl shadow-md hover:shadow-indigo-500/25 hover:opacity-95 transition-all">
+            Support Us
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Notification Toast Container -->
+  <div id="toastContainer" class="fixed bottom-6 right-6 z-50 flex flex-col gap-3 pointer-events-none"></div>
+
+  <!-- ========================================== -->
+  <!-- FRONTEND VIEW: Vibrant Public Campaign Page -->
+  <!-- ========================================== -->
+  <main id="frontendView" class="block transition-opacity duration-300">
+    
+    <!-- Hero Section -->
+    <section class="relative overflow-hidden pt-12 pb-20 sm:pt-20 sm:pb-28">
+      <!-- Decorative Background Orbs -->
+      <div class="absolute -top-24 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-gradient-to-r from-blue-400/20 via-indigo-500/25 to-fuchsia-500/20 rounded-full blur-3xl -z-10 pointer-events-none"></div>
+      
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+        
+        <div class="inline-flex flex-wrap items-center justify-center gap-2 px-4 py-2 rounded-full bg-white/95 border border-indigo-200 shadow-md mb-6 text-xs sm:text-sm font-bold text-indigo-800">
+          <span class="flex h-2.5 w-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+          <span class="text-fuchsia-600 font-extrabold uppercase tracking-wider">#EnmengeiClub</span>
+          <span class="text-slate-300">•</span>
+          <span>A Club For Everyone</span>
+          <span class="text-slate-300 hidden sm:inline">•</span>
+          <span class="px-2 py-0.5 rounded-full bg-indigo-100 text-indigo-900 text-[11px] font-extrabold hidden sm:inline">Complete 8-Leader Team</span>
+        </div>
+
+        <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-slate-900 leading-[1.15]">
+          A Club Built For All Of Us. <br class="hidden sm:inline" />
+          <span class="gradient-text">Vote #EnmengeiClub</span>
+        </h1>
+        
+        <p class="mt-6 text-lg sm:text-xl text-slate-600 max-w-3xl mx-auto font-normal leading-relaxed">
+          <strong class="text-slate-900">#EnmengeiClub</strong> is running as a united team of 8: <span class="font-bold text-slate-900">President, 1 Vice President, 1 Finance Controller, and 5 Committee Members</span>. We promise honest money management, exciting events, family outings, and a club where every staff member feels valued!
+        </p>
+
+        <!-- CTA Action Buttons -->
+        <div class="mt-8 flex flex-wrap items-center justify-center gap-4">
+          <a href="#voting" class="px-8 py-4 rounded-2xl bg-gradient-to-r from-blue-600 via-indigo-600 to-fuchsia-600 text-white font-bold text-base shadow-xl shadow-indigo-500/30 hover:scale-105 transition-transform flex items-center gap-2">
+            <span>Support #EnmengeiClub</span>
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+          </a>
+          <a href="#manifesto" class="px-8 py-4 rounded-2xl bg-white border border-slate-200 text-slate-700 hover:text-indigo-600 hover:border-indigo-300 font-bold text-base shadow-sm hover:shadow transition-all">
+            See Our 6 Promises 📋
+          </a>
+        </div>
+
+        <!-- Key Metrics Strip -->
+        <div class="mt-14 max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-4 p-4 rounded-3xl bg-white/70 border border-slate-200/80 shadow-md">
+          <div class="p-4 text-center">
+            <div class="text-3xl font-display font-extrabold text-blue-600" id="statCandidates">8</div>
+            <div class="text-xs uppercase tracking-wider font-bold text-slate-500 mt-1">Dedicated Leaders</div>
+          </div>
+          <div class="p-4 text-center border-l border-slate-100">
+            <div class="text-3xl font-display font-extrabold text-indigo-600" id="statPledges">6</div>
+            <div class="text-xs uppercase tracking-wider font-bold text-slate-500 mt-1">Action Pledges</div>
+          </div>
+          <div class="p-4 text-center border-l border-slate-100">
+            <div class="text-3xl font-display font-extrabold text-fuchsia-600" id="statLiveVotes">412</div>
+            <div class="text-xs uppercase tracking-wider font-bold text-slate-500 mt-1">Staff Supporting Us</div>
+          </div>
+          <div class="p-4 text-center border-l border-slate-100">
+            <div class="text-3xl font-display font-extrabold text-emerald-500" id="statApprovalRatio">94.8%</div>
+            <div class="text-xs uppercase tracking-wider font-bold text-slate-500 mt-1">Staff Approval</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Strategic Vision & Pledges Introduction -->
+    <section id="vision" class="py-16 bg-white/60 border-y border-slate-200/60">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-12">
+          <span class="text-xs font-extrabold tracking-widest uppercase text-indigo-600 bg-indigo-50 px-3 py-1 rounded-full border border-indigo-100">Strategic Vision</span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3 font-display">A Club Built to Work for Its Members</h2>
+          <p class="text-slate-600 mt-3 text-base">Delivering clear value, operational transparency, predictable planning, and genuine opportunities to decompress and connect across the Directorate.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <!-- Overview Card 1 -->
+          <div class="p-8 rounded-3xl bg-gradient-to-b from-blue-50/50 to-white border border-blue-100 card-hover">
+            <div class="w-14 h-14 rounded-2xl bg-blue-600 text-white flex items-center justify-center text-2xl shadow-lg shadow-blue-500/20 mb-6">
+              📅
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 font-display">Predictable Scheduling</h3>
+            <p class="text-slate-600 text-sm mt-3 leading-relaxed">
+              No last-minute scrambles. Advanced calendars released right from day one and published every January, aligned with family and school holidays.
+            </p>
+          </div>
+
+          <!-- Overview Card 2 -->
+          <div class="p-8 rounded-3xl bg-gradient-to-b from-purple-50/50 to-white border border-purple-100 card-hover">
+            <div class="w-14 h-14 rounded-2xl bg-purple-600 text-white flex items-center justify-center text-2xl shadow-lg shadow-purple-500/20 mb-6">
+              ⚖️
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 font-display">Open-Book Governance</h3>
+            <p class="text-slate-600 text-sm mt-3 leading-relaxed">
+              Comprehensive 30-day baseline audit, itemized revenue and expense reports, and member votes before major capital commitments are made.
+            </p>
+          </div>
+
+          <!-- Overview Card 3 -->
+          <div class="p-8 rounded-3xl bg-gradient-to-b from-pink-50/50 to-white border border-pink-100 card-hover">
+            <div class="w-14 h-14 rounded-2xl bg-pink-600 text-white flex items-center justify-center text-2xl shadow-lg shadow-pink-500/20 mb-6">
+              🏖️
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 font-display">Wellness & Connection</h3>
+            <p class="text-slate-600 text-sm mt-3 leading-relaxed">
+              Meaningful recharge through an annual weekend retreat, executive gala dinner, diverse leagues, and certified physical training instructors.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Manifesto & Main Pledges Section -->
+    <section id="manifesto" class="py-20 relative">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+          <div>
+            <div class="inline-flex items-center gap-2 text-xs font-bold text-fuchsia-600 bg-fuchsia-50 border border-fuchsia-200 px-3 py-1 rounded-full uppercase tracking-wider mb-2">
+              <span>Accountable Roadmap</span>
+            </div>
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 font-display">Our 6 Election Pledges</h2>
+            <p class="text-slate-600 mt-2 text-base">A structured, accountable manifesto designed to modernize and elevate our community. Click any card for details.</p>
+          </div>
+          <div class="mt-4 md:mt-0 text-sm text-slate-500 font-medium flex items-center gap-2">
+            <span class="w-3 h-3 rounded-full bg-emerald-500"></span>
+            Click any pledge to view actionable roadmap
+          </div>
+        </div>
+
+        <!-- Manifesto Grid -->
+        <div id="manifestoGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Generated via JavaScript -->
+        </div>
+
+      </div>
+    </section>
+
+    <!-- The 8 Candidates Ticket -->
+    <section id="team" class="py-20 bg-slate-100/70 border-t border-slate-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <span class="text-xs font-extrabold tracking-widest uppercase text-blue-600 bg-blue-50 px-3 py-1 rounded-full border border-blue-200">#EnmengeiClub Full Team</span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3 font-display">Meet Your 8 Candidates</h2>
+          <p class="text-slate-600 mt-2">A friendly and caring team representing every squad and department.</p>
+        </div>
+
+        <!-- Tier 1: President -->
+        <div class="mb-12">
+          <div class="p-8 sm:p-10 rounded-3xl bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white relative overflow-hidden shadow-2xl border border-indigo-500/30">
+            <div class="absolute -right-10 -bottom-10 w-96 h-96 bg-indigo-500/20 rounded-full blur-3xl pointer-events-none"></div>
+            
+            <div class="relative z-10 flex flex-col lg:flex-row items-center gap-8">
+              <!-- Avatar / Badge -->
+              <div class="relative shrink-0">
+                <div class="w-36 h-36 sm:w-44 sm:h-44 rounded-3xl bg-gradient-to-tr from-blue-500 via-indigo-500 to-pink-500 p-1.5 shadow-2xl">
+                  <div class="w-full h-full bg-slate-900 rounded-[22px] flex flex-col items-center justify-center text-center p-4">
+                    <span class="text-5xl sm:text-6xl mb-1">👑</span>
+                    <span class="text-xs font-bold uppercase tracking-wider text-indigo-300">Contesting For</span>
+                    <span class="text-sm font-black text-white">PRESIDENT</span>
+                  </div>
+                </div>
+                <span class="absolute -bottom-3 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-gradient-to-r from-amber-400 to-amber-600 text-slate-900 font-extrabold text-xs tracking-wider uppercase shadow-lg whitespace-nowrap">
+                  #EnmengeiClub Lead
+                </span>
+              </div>
+
+              <!-- President Details -->
+              <div class="flex-1 text-center lg:text-left">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/20 border border-indigo-400/30 text-indigo-300 text-xs font-bold uppercase tracking-wider mb-2">
+                  <span>Candidate for iClub President</span>
+                </div>
+                <h3 class="text-2xl sm:text-4xl font-extrabold font-display text-white">Your Presidential Candidate</h3>
+                <p class="text-indigo-200 text-sm font-medium mt-1">Bringing our staff together & listening to every voice</p>
+                
+                <p class="mt-4 text-slate-300 text-sm sm:text-base leading-relaxed max-w-2xl">
+                  "Our club should belong to all of us. As your President under <span class="text-amber-300 font-bold">#EnmengeiClub</span>, I promise to make iClub open, friendly, and lively—where everyone, from new joiners to senior staff, has fun and is supported."
+                </p>
+
+                <div class="mt-6 flex flex-wrap items-center justify-center lg:justify-start gap-4">
+                  <button onclick="castQuickEndorsement('pres')" class="px-6 py-3 rounded-xl bg-gradient-to-r from-amber-400 via-amber-500 to-orange-500 text-slate-950 font-extrabold text-sm shadow-lg hover:scale-105 transition-all flex items-center gap-2">
+                    <span>⭐ Support President</span>
+                    <span id="presEndorseCount" class="bg-black/20 px-2 py-0.5 rounded-md text-xs font-mono font-bold">184</span>
+                  </button>
+                  <a href="#voting" class="px-5 py-3 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 text-white font-bold text-sm transition-all">
+                    Vote For Our Full Team
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tier 2: Vice President & Finance Controller -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+          
+          <!-- Vice President Card -->
+          <div class="p-6 sm:p-8 rounded-3xl bg-white border border-slate-200 shadow-lg relative card-hover">
+            <div class="flex items-start gap-5">
+              <div class="w-20 h-20 rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-3xl text-white shadow-md shadow-indigo-500/20 shrink-0">
+                🚀
+              </div>
+              <div class="flex-1">
+                <span class="px-2.5 py-0.5 rounded-full text-xs font-bold uppercase bg-indigo-50 text-indigo-700 border border-indigo-200">
+                  Vice President
+                </span>
+                <h3 class="text-xl font-bold text-slate-900 mt-1 font-display">Candidate for Vice President</h3>
+                <p class="text-xs text-slate-500 font-medium">Head of Events & Member Care</p>
+                <p class="text-sm text-slate-600 mt-3 leading-relaxed">
+                  Making sure every event is well-planned, welcoming for everyone, and that no colleague is left out of the fun.
+                </p>
+                <div class="mt-5 flex items-center justify-between pt-4 border-t border-slate-100">
+                  <span class="text-xs font-semibold text-slate-500">Staff Support: <strong class="text-indigo-600 font-mono" id="vpScore">94%</strong></span>
+                  <button onclick="castQuickEndorsement('vp')" class="px-3 py-1.5 rounded-xl bg-indigo-50 hover:bg-indigo-100 text-indigo-700 text-xs font-bold transition-all flex items-center gap-1">
+                    <span>👍 Support VP</span>
+                    <span id="vpEndorseCount" class="font-mono text-indigo-900 font-bold ml-1">112</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Finance Controller Card -->
+          <div class="p-6 sm:p-8 rounded-3xl bg-white border border-slate-200 shadow-lg relative card-hover">
+            <div class="flex items-start gap-5">
+              <div class="w-20 h-20 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center text-3xl text-white shadow-md shadow-emerald-500/20 shrink-0">
+                💎
+              </div>
+              <div class="flex-1">
+                <span class="px-2.5 py-0.5 rounded-full text-xs font-bold uppercase bg-emerald-50 text-emerald-700 border border-emerald-200">
+                  Finance Controller
+                </span>
+                <h3 class="text-xl font-bold text-slate-900 mt-1 font-display">Candidate for Finance Controller</h3>
+                <p class="text-xs text-slate-500 font-medium">Clear & Honest Money Keeper</p>
+                <p class="text-sm text-slate-600 mt-3 leading-relaxed">
+                  Promises clear and open accounts, getting the best value for our club fees, and zero hidden spending.
+                </p>
+                <div class="mt-5 flex items-center justify-between pt-4 border-t border-slate-100">
+                  <span class="text-xs font-semibold text-slate-500">Staff Support: <strong class="text-emerald-600 font-mono" id="fcScore">96%</strong></span>
+                  <button onclick="castQuickEndorsement('fc')" class="px-3 py-1.5 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-emerald-700 text-xs font-bold transition-all flex items-center gap-1">
+                    <span>💰 Support Finance</span>
+                    <span id="fcEndorseCount" class="font-mono text-emerald-900 font-bold ml-1">104</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Tier 3: 5 Committee Members -->
+        <div>
+          <div class="flex items-center gap-3 mb-6">
+            <h3 class="text-xl font-bold font-display text-slate-900">Our 5 Committee Members (#EnmengeiClub)</h3>
+            <span class="h-px bg-slate-300 flex-1"></span>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5" id="membersGrid">
+            <!-- Rendered by JS -->
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Voting & Popularity Arena -->
+    <section id="voting" class="py-20 bg-slate-50 relative">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-3xl mx-auto mb-14">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-fuchsia-50 border border-fuchsia-200 text-xs font-bold text-fuchsia-700 uppercase tracking-wider mb-2">
+            <span>Staff Support Poll 2026</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-2 font-display">Back Team #EnmengeiClub</h2>
+          <p class="text-slate-600 mt-2">Show your support for our President, Vice President, Finance Controller, and the 5 Committee Members. Tell us which idea you like the most!</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          
+          <!-- Ballot Form -->
+          <div class="lg:col-span-7 bg-white border border-slate-200 p-6 sm:p-8 rounded-3xl shadow-sm">
+            <div class="flex items-center justify-between pb-4 border-b border-slate-200 mb-6">
+              <h3 class="text-lg font-bold text-slate-900 flex items-center gap-2">
+                <span>🗳️ Official #EnmengeiClub Support Ballot</span>
+              </h3>
+              <span class="text-xs font-bold px-2.5 py-1 rounded-full bg-fuchsia-100 text-fuchsia-800">#EnmengeiClub Slate</span>
+            </div>
+
+            <form id="voteForm" onsubmit="handleVoteSubmit(event)" class="space-y-6">
+              
+              <!-- Full Team Vote -->
+              <div>
+                <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-2">
+                  1. Team Support
+                </label>
+                <div class="space-y-2.5">
+                  <label class="flex items-center justify-between p-4 rounded-2xl bg-indigo-50/80 border-2 border-indigo-500 cursor-pointer transition-all hover:bg-indigo-50">
+                    <div class="flex items-center gap-3">
+                      <input type="checkbox" id="fullSlateCheck" checked class="w-4 h-4 text-indigo-600 rounded focus:ring-indigo-500">
+                      <div>
+                        <div class="text-sm font-black text-slate-900">Support the Full #EnmengeiClub Team ⭐</div>
+                        <div class="text-xs text-indigo-700 font-semibold">I support all 8 members (President, VP, Finance + 5 Members)</div>
+                      </div>
+                    </div>
+                    <span class="px-2.5 py-1 rounded-full text-[10px] font-extrabold bg-indigo-200 text-indigo-900">#Enmenge</span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- President Vote -->
+              <div>
+                <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-2">
+                  2. President Support
+                </label>
+                <label class="flex items-center justify-between p-4 rounded-2xl bg-amber-50/70 border-2 border-amber-500 cursor-pointer transition-all">
+                  <div class="flex items-center gap-3">
+                    <input type="checkbox" id="presCheck" checked class="w-4 h-4 text-amber-600 rounded focus:ring-amber-500">
+                    <div>
+                      <span class="text-sm font-bold text-slate-900">Support #Enmenge Candidate for President 👑</span>
+                      <span class="block text-xs text-amber-800 font-medium">Ready to lead with fairness and care for everyone</span>
+                    </div>
+                  </div>
+                  <span class="text-xs font-bold font-mono text-amber-700">★ Main Lead</span>
+                </label>
+              </div>
+
+              <!-- Executive Roles Vote -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-2">
+                    3. Vice President
+                  </label>
+                  <label class="flex items-center gap-3 p-3.5 rounded-2xl bg-slate-50 border border-slate-200 hover:border-indigo-500 cursor-pointer">
+                    <input type="checkbox" name="vpCheck" id="vpCheck" checked class="w-4 h-4 text-indigo-600 rounded">
+                    <span class="text-sm font-semibold text-slate-800">Support Vice President 🚀</span>
+                  </label>
+                </div>
+
+                <div>
+                  <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-2">
+                    4. Finance Controller
+                  </label>
+                  <label class="flex items-center gap-3 p-3.5 rounded-2xl bg-slate-50 border border-slate-200 hover:border-emerald-500 cursor-pointer">
+                    <input type="checkbox" name="fcCheck" id="fcCheck" checked class="w-4 h-4 text-emerald-600 rounded">
+                    <span class="text-sm font-semibold text-slate-800">Support Finance Controller 💎</span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- 5 Members Multi-Select -->
+              <div>
+                <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-2">
+                  5. Support Committee Members
+                </label>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5" id="votingMembersCheckboxGroup">
+                  <!-- Dynamically inserted -->
+                </div>
+              </div>
+
+              <!-- Top Promise Poll -->
+              <div>
+                <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-2">
+                  6. Which #Enmenge Pledge Do You Value Most?
+                </label>
+                <select id="pledgePrioritySelect" class="w-full p-3.5 rounded-2xl bg-slate-50 border border-slate-200 text-slate-800 text-sm font-medium focus:ring-2 focus:ring-indigo-500 focus:outline-none">
+                  <option value="p1">Pledge 1: Long-Term Event Planning & Scheduling Predictability</option>
+                  <option value="p2">Pledge 2: Financial Governance & Complete Budget Transparency</option>
+                  <option value="p3">Pledge 3: Annual Retreat & Executive Networking Dinner</option>
+                  <option value="p4">Pledge 4: Diverse Recreation & Member-Led Programming</option>
+                  <option value="p5">Pledge 5: Professional Health & Wellness Development</option>
+                  <option value="p6">Pledge 6: Fiscal Sustainability & Financial Independence</option>
+                </select>
+              </div>
+
+              <!-- Submit button -->
+              <button type="submit" class="w-full py-4 rounded-2xl bg-gradient-to-r from-blue-600 via-indigo-600 to-fuchsia-600 text-white font-bold text-base shadow-lg shadow-indigo-500/25 hover:opacity-95 transition-all">
+                Send My Support for #EnmengeiClub ⭐
+              </button>
+            </form>
+          </div>
+
+          <!-- Live Popularity Breakdown Meters -->
+          <div class="lg:col-span-5 space-y-6">
+            <div class="bg-gradient-to-b from-slate-900 to-indigo-950 text-white p-6 sm:p-8 rounded-3xl shadow-xl border border-indigo-500/30">
+              <div class="flex items-center justify-between mb-6">
+                <div>
+                  <h3 class="text-xl font-bold font-display">Live Support Tracker</h3>
+                  <p class="text-xs text-indigo-300">Real-time team votes</p>
+                </div>
+                <span class="px-2.5 py-1 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-bold border border-emerald-500/30 animate-pulse">
+                  Live Counter
+                </span>
+              </div>
+
+              <!-- Overall Team Endorsement Index Bar -->
+              <div class="mb-6 p-4 rounded-2xl bg-white/5 border border-white/10">
+                <div class="flex justify-between text-xs font-bold uppercase tracking-wider mb-2">
+                  <span class="text-amber-400">#EnmengeiClub Staff Support</span>
+                  <span class="text-white font-mono" id="raceLeadShareText">94.8% Positive</span>
+                </div>
+                <div class="w-full h-3 bg-white/10 rounded-full overflow-hidden flex">
+                  <div id="barEnmengeShare" class="bg-gradient-to-r from-amber-400 via-pink-500 to-indigo-500 h-full transition-all duration-700" style="width: 94.8%"></div>
+                </div>
+                <div class="flex items-center justify-between text-[11px] text-slate-300 font-semibold mt-2">
+                  <span>Full Team Supporters</span>
+                  <span class="text-amber-400 font-mono font-bold" id="totalSlateVotesBadge">391 Staff Confirmed</span>
+                </div>
+              </div>
+
+              <!-- Roles Breakdown -->
+              <div class="space-y-4">
+                <!-- Pres -->
+                <div>
+                  <div class="flex justify-between text-xs mb-1">
+                    <span class="text-slate-300">President Candidate</span>
+                    <span class="font-mono font-bold text-white" id="barPresVal">184 supporters (92%)</span>
+                  </div>
+                  <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden">
+                    <div id="barPres" class="h-full bg-amber-400 rounded-full transition-all duration-500" style="width: 92%"></div>
+                  </div>
+                </div>
+
+                <!-- VP -->
+                <div>
+                  <div class="flex justify-between text-xs mb-1">
+                    <span class="text-slate-300">Vice President Candidate</span>
+                    <span class="font-mono font-bold text-white" id="barVpVal">156 supporters (85%)</span>
+                  </div>
+                  <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden">
+                    <div id="barVp" class="h-full bg-indigo-400 rounded-full transition-all duration-500" style="width: 85%"></div>
+                  </div>
+                </div>
+
+                <!-- Finance -->
+                <div>
+                  <div class="flex justify-between text-xs mb-1">
+                    <span class="text-slate-300">Finance Controller Candidate</span>
+                    <span class="font-mono font-bold text-white" id="barFcVal">162 supporters (88%)</span>
+                  </div>
+                  <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden">
+                    <div id="barFc" class="h-full bg-emerald-400 rounded-full transition-all duration-500" style="width: 88%"></div>
+                  </div>
+                </div>
+
+                <!-- 5 Members aggregate -->
+                <div>
+                  <div class="flex justify-between text-xs mb-1">
+                    <span class="text-slate-300">5 Committee Members (Average)</span>
+                    <span class="font-mono font-bold text-white" id="barMembersVal">148 supporters (81%)</span>
+                  </div>
+                  <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden">
+                    <div id="barMembers" class="h-full bg-pink-400 rounded-full transition-all duration-500" style="width: 81%"></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Most Popular Promise -->
+              <div class="mt-8 pt-6 border-t border-white/10">
+                <h4 class="text-xs font-bold uppercase tracking-wider text-indigo-300 mb-3">Most Loved Promise by Staff</h4>
+                <div class="p-3.5 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-between">
+                  <span class="text-sm font-semibold text-white" id="topPledgeName">Fun Tech Days & Friendly Coding Challenges</span>
+                  <span class="text-xs px-2 py-0.5 rounded-md bg-indigo-500/30 text-indigo-300 font-mono" id="topPledgeVotes">134 picks</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Quick Info Callout -->
+            <div class="p-6 rounded-3xl bg-amber-50 border border-amber-200 flex items-start gap-4">
+              <span class="text-3xl">📣</span>
+              <div>
+                <h4 class="text-sm font-bold text-amber-900">What does #Enmenge mean?</h4>
+                <p class="text-xs text-amber-800 mt-1 leading-relaxed">
+                  "Enmenge" means <strong>Everyone's</strong>. It means every team, every desk, and every colleague has an equal place in our club.
+                </p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Suggestion Box & Member Ideas Community Board -->
+    <section id="ideas" class="py-20 bg-slate-50 border-t border-slate-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-3xl mx-auto mb-14">
+          <span class="text-xs font-bold uppercase tracking-widest text-indigo-600 bg-indigo-50 px-3 py-1 rounded-full border border-indigo-100">Our Staff Voice</span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-2 font-display">Colleague Ideas & Wishlist Board</h2>
+          <p class="text-slate-600 text-sm sm:text-base mt-2">See what our colleagues are asking for! Share your own idea, vote on the best ones, and watch how #EnmengeiClub makes them happen.</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          
+          <!-- Left Column: Submit Idea Form -->
+          <div class="lg:col-span-5 bg-white p-7 sm:p-8 rounded-3xl border border-slate-200 shadow-sm sticky top-28">
+            <div class="flex items-center gap-3 pb-4 border-b border-slate-100 mb-5">
+              <div class="w-10 h-10 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-xl">💡</div>
+              <div>
+                <h3 class="text-lg font-bold text-slate-900 font-display">Drop Your Idea Here</h3>
+                <p class="text-xs text-slate-500">Every voice matters to #EnmengeiClub</p>
+              </div>
+            </div>
+
+            <form id="ideaForm" onsubmit="handleIdeaSubmit(event)" class="space-y-4">
+              <div>
+                <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1">Your Name or Desk (Optional)</label>
+                <input type="text" id="ideaAuthor" placeholder="e.g. 3rd Floor Team / A Colleague" class="w-full p-3 rounded-xl bg-slate-50 border border-slate-200 text-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none">
+              </div>
+
+              <div>
+                <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1">Category</label>
+                <select id="ideaCategory" class="w-full p-3 rounded-xl bg-slate-50 border border-slate-200 text-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none font-medium">
+                  <option value="Social Event">🏖️ Fun Trip & Parties</option>
+                  <option value="Tech & Training">⚡ Learning & Tech Sessions</option>
+                  <option value="Welfare">🛋️ Office Comfort & Well-being</option>
+                  <option value="Sports & Gaming">🎮 Sports & Gaming Tournaments</option>
+                  <option value="Finance">💎 Club Money & Fair Spending</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1">Your Suggestion or Request</label>
+                <textarea id="ideaText" rows="3" required placeholder="Tell us what fun event, snack, or change you want for iClub..." class="w-full p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none"></textarea>
+              </div>
+
+              <button type="submit" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-blue-600 via-indigo-600 to-fuchsia-600 hover:opacity-95 text-white font-bold text-sm shadow-md transition-all flex items-center justify-center gap-2">
+                <span>Post Idea to Community Board</span>
+                <span>✨</span>
+              </button>
+            </form>
+          </div>
+
+          <!-- Right Column: Live Colleague Ideas Wall -->
+          <div class="lg:col-span-7 space-y-4">
+            
+            <!-- Category Filter Tabs -->
+            <div class="flex items-center justify-between flex-wrap gap-2 pb-2">
+              <div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-1">
+                <button onclick="filterFrontendIdeas('All')" id="btnFilterAll" class="px-3.5 py-1.5 rounded-full text-xs font-bold bg-indigo-600 text-white shadow-xs transition-all">
+                  All Ideas
+                </button>
+                <button onclick="filterFrontendIdeas('Social Event')" id="btnFilterSocial" class="px-3.5 py-1.5 rounded-full text-xs font-semibold bg-white border border-slate-200 text-slate-600 hover:bg-slate-100 transition-all">
+                  Trips & Fun
+                </button>
+                <button onclick="filterFrontendIdeas('Tech & Training')" id="btnFilterTech" class="px-3.5 py-1.5 rounded-full text-xs font-semibold bg-white border border-slate-200 text-slate-600 hover:bg-slate-100 transition-all">
+                  Tech & Learning
+                </button>
+                <button onclick="filterFrontendIdeas('Welfare')" id="btnFilterWelfare" class="px-3.5 py-1.5 rounded-full text-xs font-semibold bg-white border border-slate-200 text-slate-600 hover:bg-slate-100 transition-all">
+                  Welfare
+                </button>
+                <button onclick="filterFrontendIdeas('Sports & Gaming')" id="btnFilterSports" class="px-3.5 py-1.5 rounded-full text-xs font-semibold bg-white border border-slate-200 text-slate-600 hover:bg-slate-100 transition-all">
+                  Games & Sports
+                </button>
+              </div>
+
+              <span class="text-xs text-slate-400 font-medium" id="frontendIdeasCountBadge">4 Ideas Posted</span>
+            </div>
+
+            <!-- Frontend Ideas Cards Feed -->
+            <div id="frontendIdeasBoard" class="space-y-4">
+              <!-- Rendered via JS -->
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-500 to-fuchsia-500 flex items-center justify-center text-white font-bold text-lg">
+            <i>i</i>C
+          </div>
+          <div>
+            <p class="text-white font-bold text-base">iClub 2026 • #EnmengeiClub</p>
+            <p class="text-xs text-slate-400">Our Staff Club for Everyone</p>
+          </div>
+        </div>
+        <p class="text-xs text-slate-500 text-center md:text-right">
+          Building a happy, honest, and friendly club together.
+        </p>
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- ========================================== -->
+  <!-- BACKEND VIEW: Live Staff Admin Dashboard -->
+  <!-- ========================================== -->
+  <main id="backendView" class="hidden transition-opacity duration-300 py-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Admin Top Banner with Direct URL tool -->
+      <div class="bg-slate-900 text-white p-6 sm:p-8 rounded-3xl border border-slate-800 shadow-2xl mb-8">
+        <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 pb-6 border-b border-slate-800">
+          <div>
+            <div class="flex items-center gap-2 mb-2">
+              <span class="px-2.5 py-0.5 rounded-md bg-emerald-500/20 text-emerald-400 text-xs font-mono font-bold uppercase">Admin Console</span>
+              <span class="px-2 py-0.5 rounded-md bg-fuchsia-500/20 text-fuchsia-300 text-xs font-bold">#EnmengeiClub</span>
+              <span class="text-xs text-slate-400 font-mono">Dedicated Route: <strong>#admin</strong></span>
+            </div>
+            <h1 class="text-2xl sm:text-3xl font-extrabold font-display">Campaign Team Dashboard</h1>
+            <p class="text-slate-400 text-xs sm:text-sm mt-1">Review live votes, see which promises staff like best, and manage team ideas.</p>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-3">
+            <button onclick="navigateToRoute('home')" class="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white text-xs font-bold border border-slate-700 transition-all flex items-center gap-2">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+              <span>Back to Public Campaign</span>
+            </button>
+            <button onclick="simulateBatchVotes()" class="px-4 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold shadow-md transition-all flex items-center gap-2">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+              <span>Add +25 Test Votes</span>
+            </button>
+            <button onclick="exportCampaignData()" class="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 text-xs font-bold transition-all flex items-center gap-2">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+              <span>Save Report (JSON)</span>
+            </button>
+            <button onclick="resetPollData()" class="px-3.5 py-2.5 rounded-xl bg-rose-900/40 hover:bg-rose-900/60 text-rose-300 border border-rose-800 text-xs font-bold transition-all">
+              Reset
+            </button>
+          </div>
+        </div>
+
+        <!-- Dedicated URL Direct Access Bar -->
+        <div class="mt-5 pt-1 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs bg-black/40 p-4 rounded-2xl border border-white/10">
+          <div class="flex items-center gap-2 text-slate-300">
+            <span class="text-indigo-400 font-bold">🔗 Standalone Backend URL:</span>
+            <code id="adminUrlDisplay" class="bg-black/50 px-2.5 py-1 rounded-lg text-emerald-400 font-mono text-[11px] select-all">.../#admin</code>
+          </div>
+          <button onclick="copyAdminUrl()" class="px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold transition-all flex items-center justify-center gap-1.5 shrink-0">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+            <span>Copy Direct URL</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Quick KPI Strip -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-8">
+        <div class="p-5 rounded-2xl bg-white border border-slate-200 shadow-sm">
+          <div class="text-xs font-bold text-slate-500 uppercase tracking-wider">Total Votes Cast</div>
+          <div class="text-3xl font-display font-extrabold text-slate-900 mt-2" id="adminTotalBallots">412</div>
+          <div class="text-xs text-emerald-600 font-bold mt-1">↑ Growing every day</div>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-white border border-slate-200 shadow-sm">
+          <div class="text-xs font-bold text-slate-500 uppercase tracking-wider">Staff Approval Rating</div>
+          <div class="text-3xl font-display font-extrabold text-indigo-600 mt-2" id="adminPresMargin">94.8%</div>
+          <div class="text-xs text-emerald-600 font-bold mt-1">Very high support</div>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-white border border-slate-200 shadow-sm">
+          <div class="text-xs font-bold text-slate-500 uppercase tracking-wider">Promises Read</div>
+          <div class="text-3xl font-display font-extrabold text-fuchsia-600 mt-2" id="adminManifestoClicks">1,248</div>
+          <div class="text-xs text-slate-500 mt-1">Times cards were clicked</div>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-white border border-slate-200 shadow-sm">
+          <div class="text-xs font-bold text-slate-500 uppercase tracking-wider">Staff Suggestions</div>
+          <div class="text-3xl font-display font-extrabold text-emerald-600 mt-2" id="adminTotalIdeas">19</div>
+          <div class="text-xs text-slate-500 mt-1">Direct from colleagues</div>
+        </div>
+      </div>
+
+      <!-- Tabbed Backend Management -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        
+        <!-- Left Table: Candidates & Vote Tallies -->
+        <div class="lg:col-span-7 space-y-6">
+          <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm">
+            <h3 class="text-lg font-bold text-slate-900 font-display mb-4">Our Candidates & Support Table</h3>
+            
+            <div class="overflow-x-auto">
+              <table class="w-full text-left text-xs">
+                <thead>
+                  <tr class="border-b border-slate-200 text-slate-500 uppercase tracking-wider">
+                    <th class="pb-3">Candidate / Role</th>
+                    <th class="pb-3">Focus Area</th>
+                    <th class="pb-3 text-right">Votes</th>
+                    <th class="pb-3 text-right">Support %</th>
+                  </tr>
+                </thead>
+                <tbody id="adminCandidateTableBody" class="divide-y divide-slate-100 font-medium">
+                  <!-- Rendered dynamically -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Live Priority Pledge Distribution -->
+          <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm">
+            <h3 class="text-lg font-bold text-slate-900 font-display mb-4">Which Promises Staff Like Best</h3>
+            <div id="adminPledgesDistribution" class="space-y-3">
+              <!-- Rendered via JS -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Feed: Realtime Staff Suggestions -->
+        <div class="lg:col-span-5 space-y-6">
+          <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm">
+            <div class="flex items-center justify-between mb-4">
+              <h3 class="text-lg font-bold text-slate-900 font-display">Staff Ideas & Feedback</h3>
+              <span class="text-xs font-bold text-indigo-600 bg-indigo-50 px-2 py-0.5 rounded-full" id="adminFeedCount">19 items</span>
+            </div>
+
+            <div id="adminIdeasFeed" class="space-y-3 max-h-[580px] overflow-y-auto pr-1">
+              <!-- Dynamically populated -->
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ========================================== -->
+  <!-- MANIFESTO DETAILS MODAL                     -->
+  <!-- ========================================== -->
+  <div id="manifestoModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-md hidden opacity-0 transition-opacity duration-300">
+    <div id="modalDialog" class="bg-white rounded-3xl max-w-2xl w-full p-6 sm:p-8 shadow-2xl border border-slate-200 transform scale-95 transition-transform duration-300 relative max-h-[90vh] overflow-y-auto">
+      
+      <!-- Close Button -->
+      <button onclick="closeManifestoModal()" class="absolute top-6 right-6 w-10 h-10 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-500 hover:text-slate-800 transition-all">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+
+      <!-- Modal Content Header -->
+      <div class="flex items-center gap-4 mb-6">
+        <div id="modalIconWrap" class="w-16 h-16 rounded-2xl flex items-center justify-center text-3xl text-white shadow-lg shrink-0">
+          📅
+        </div>
+        <div>
+          <span id="modalPillarTag" class="text-xs font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-indigo-50 text-indigo-700 font-mono">Pledge #1</span>
+          <h3 id="modalTitle" class="text-2xl font-bold font-display text-slate-900 mt-1">Pledge Title</h3>
+        </div>
+      </div>
+
+      <!-- Main Description -->
+      <div class="space-y-4 text-slate-600 text-sm leading-relaxed">
+        <p id="modalDescription" class="text-base text-slate-700 font-medium">Detailed explanation...</p>
+        
+        <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200">
+          <h4 class="text-xs font-bold uppercase tracking-wider text-slate-900 mb-2">Key Action Items & Roadmap:</h4>
+          <ul id="modalDeliverables" class="space-y-2 list-disc list-inside text-slate-700 text-xs sm:text-sm">
+            <!-- Populated via JS -->
+          </ul>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3 pt-2">
+          <div class="p-3 rounded-xl bg-blue-50 border border-blue-100">
+            <span class="text-xs text-blue-600 font-bold uppercase block">Financial Framework</span>
+            <span id="modalBudget" class="text-sm font-bold text-slate-900 font-mono">Standard Operating Dues</span>
+          </div>
+          <div class="p-3 rounded-xl bg-purple-50 border border-purple-100">
+            <span class="text-xs text-purple-600 font-bold uppercase block">Lead Responsibility</span>
+            <span id="modalSponsor" class="text-sm font-bold text-slate-900">President & Cabinet</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Action Button inside Modal -->
+      <div class="mt-8 pt-6 border-t border-slate-100 flex items-center justify-between">
+        <button id="btnEndorseModalPledge" onclick="togglePledgeEndorsementFromModal()" class="px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs shadow-md transition-all flex items-center gap-2">
+          <span>❤ I Support This Pledge</span>
+          <span id="modalPledgeSupportCount" class="bg-indigo-800 px-2 py-0.5 rounded text-[11px]">84</span>
+        </button>
+        <button onclick="closeManifestoModal()" class="px-4 py-2.5 rounded-xl border border-slate-200 text-slate-600 hover:text-slate-900 font-bold text-xs">
+          Close Window
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    /* Campaign Data State */
+    const campaignState = {
+      currentView: 'frontend',
+      totalVotes: 412,
+      manifestoClicks: 1248,
+      activeModalPledgeId: null,
+
+      // #EnmengeiClub Slate Standings
+      slate: {
+        name: '#EnmengeiClub (Our Full Team)',
+        slogan: '#EnmengeiClub',
+        slateEndorsements: 391,
+        approvalRate: 94.8
+      },
+
+      // Candidates Ticket (1 Pres, 1 VP, 1 Finance, 5 Members)
+      candidates: {
+        pres: {
+          id: 'pres',
+          role: 'President',
+          title: 'Presidential Candidate (You)',
+          domain: 'Team Leadership & Executive Accountability',
+          team: '#EnmengeiClub',
+          endorsements: 184,
+          maxTotal: 200,
+          color: 'from-amber-400 to-orange-500'
+        },
+        vp: {
+          id: 'vp',
+          role: 'Vice President',
+          title: 'Candidate for Vice President',
+          domain: 'Operations & Event Coordination',
+          team: '#EnmengeiClub',
+          endorsements: 156,
+          maxTotal: 200,
+          color: 'from-blue-600 to-indigo-600'
+        },
+        fc: {
+          id: 'fc',
+          role: 'Finance Controller',
+          title: 'Candidate for Finance Controller',
+          domain: 'Open-Book Auditing & Fiscal Sustainability',
+          team: '#EnmengeiClub',
+          endorsements: 162,
+          maxTotal: 200,
+          color: 'from-emerald-500 to-teal-600'
+        },
+        m1: {
+          id: 'm1',
+          role: 'Committee Member',
+          name: 'Member 1 (Planning & Logistics)',
+          domain: 'Predictable Event Calendars & Scheduling',
+          team: '#EnmengeiClub',
+          endorsements: 142,
+          color: 'from-indigo-500 to-blue-500',
+          icon: '📅'
+        },
+        m2: {
+          id: 'm2',
+          role: 'Committee Member',
+          name: 'Member 2 (Retreat & Socials)',
+          domain: 'Annual Weekend Retreat & Gala Dinner',
+          team: '#EnmengeiClub',
+          endorsements: 151,
+          color: 'from-cyan-500 to-blue-600',
+          icon: '🏖️'
+        },
+        m3: {
+          id: 'm3',
+          role: 'Committee Member',
+          name: 'Member 3 (Recreation & Sports)',
+          domain: 'Football, Chess, Tabletop & E-Sports',
+          team: '#EnmengeiClub',
+          endorsements: 139,
+          color: 'from-fuchsia-500 to-pink-600',
+          icon: '⚽'
+        },
+        m4: {
+          id: 'm4',
+          role: 'Committee Member',
+          name: 'Member 4 (Health & Fitness)',
+          domain: 'Certified PTI Sessions & Wellness',
+          team: '#EnmengeiClub',
+          endorsements: 148,
+          color: 'from-emerald-500 to-green-600',
+          icon: '💪'
+        },
+        m5: {
+          id: 'm5',
+          role: 'Committee Member',
+          name: 'Member 5 (Member Voice & Proposals)',
+          domain: 'Bottom-Up Member-Led Initiatives',
+          team: '#EnmengeiClub',
+          endorsements: 144,
+          color: 'from-amber-500 to-rose-500',
+          icon: '💡'
+        }
+      },
+
+      /* The 6 Strategic Pledges (No Pillars) */
+      pledges: [
+        {
+          id: 'p1',
+          pillar: 'Pledge 1: Scheduling Predictability',
+          title: 'Long-Term Event Planning & Scheduling Predictability',
+          icon: '📅',
+          gradient: 'from-blue-600 to-indigo-600',
+          tag: 'Advance Planning',
+          shortDesc: 'No last-minute clashes. Full event schedules released promptly, yearly January calendars, and family-first scheduling.',
+          fullDesc: 'Last-minute plans disrupt personal and family commitments. We respect your schedule and will ensure our programming is communicated well in advance so everyone can plan without stress.',
+          deliverables: [
+            'Immediate Roadmap: Release a full event calendar promptly to keep members informed and prepared.',
+            'Proactive Annual Planning: Publish the comprehensive next-year calendar every January to enable advance personal planning.',
+            'Work-Life Balance Alignment: Cross-reference club programming against school breaks and public holidays to ensure schedules do not compete with family time.'
+          ],
+          budget: 'Predictable Annual Calendar',
+          sponsor: 'President & Vice President',
+          supportCount: 182
+        },
+        {
+          id: 'p2',
+          pillar: 'Pledge 2: Budget Transparency',
+          title: 'Financial Governance & Complete Budget Transparency',
+          icon: '📊',
+          gradient: 'from-emerald-500 to-teal-600',
+          tag: 'Audited & Open',
+          shortDesc: '30-day baseline financial audit, itemized open-book disclosures for all revenues and expenses, and participatory budget voting.',
+          fullDesc: 'Every member contributes to our community, and you are entitled to complete clarity regarding how club resources are deployed. Honest, open-book records from day one.',
+          deliverables: [
+            'First 30 Days Audit: Conduct an exhaustive review of club finances, balance sheets, and liabilities, presenting an inaugural baseline report to the general membership.',
+            'Open-Book Accounting: Ensure itemized disclosures for all club revenue, administrative expenses, and net surplus.',
+            'Participatory Budgeting: Involve members in key budget decisions through formal feedback channels and voting thresholds before capital commitments are made.'
+          ],
+          budget: 'Finance Controller Direct Oversight',
+          sponsor: 'Finance Controller & President',
+          supportCount: 189
+        },
+        {
+          id: 'p3',
+          pillar: 'Pledge 3: Retreat & Gala',
+          title: 'Annual Retreat & Executive Networking Dinner',
+          icon: '🏖️',
+          gradient: 'from-pink-500 to-rose-600',
+          tag: 'Recharge & Connect',
+          shortDesc: 'Curated overnight weekend coastal retreat and an elevated annual gala dinner with a strict 50% turnout threshold and full post-trip financial disclosure.',
+          fullDesc: 'Meaningful downtime away from screens and daily operational stressors is critical to sustained performance and genuine team cohesion. Hosted with clear governance and fairness.',
+          deliverables: [
+            'Curated Weekend Retreat: Organize an annual overnight getaway focused on rest, coastal recreation, and casual team-building.',
+            'Signature Annual Dinner: Host a dedicated annual gala dinner to celebrate community achievements and network in an elevated, relaxed setting.',
+            'Feasibility & Timing: Schedule exclusively outside standard operating hours.',
+            '50% Turnout Rule: Proceed with the retreat only upon reaching a 50% confirmed member turnout threshold to ensure resource efficiency.',
+            'Collaborative Planning: Host collaborative agenda-planning sessions with members prior to departure.',
+            'Post-Trip Reconciliation: Issue a transparent post-trip financial reconciliation disclosing all sponsor contributions and unspent capital.'
+          ],
+          budget: 'Subsidized with Dedicated Sponsorships',
+          sponsor: 'Vice President & Member 2 (Retreat & Socials)',
+          supportCount: 195
+        },
+        {
+          id: 'p4',
+          pillar: 'Pledge 4: Diverse Recreation',
+          title: 'Diverse Recreation & Member-Led Programming',
+          icon: '⚽',
+          gradient: 'from-amber-500 to-orange-600',
+          tag: 'Sports & Games',
+          shortDesc: 'Organized leagues spanning football tournaments, chess and tabletop strategy, e-sports, and an open bottom-up member proposal channel.',
+          fullDesc: 'Club activities should cater to varied interests and competitive pursuits, rather than a one-size-fits-all approach. We empower any colleague to champion new clubs.',
+          deliverables: [
+            'Structured Competitions: Host organized leagues spanning traditional athletics (football tournaments), strategic indoor games (chess, tabletop strategy), and competitive e-sports.',
+            'Bottom-Up Initiative: Maintain an open proposal mechanism where any member can pitch and rally support for new interest groups or specialized events.',
+            'Transparent Resource Allocation: Provide seed equipment, trophies, and designated spaces for recognized member interest groups.'
+          ],
+          budget: 'Recreation & Interest Groups Fund',
+          sponsor: 'Member 3 (Recreation) & Member 5 (Member Voice)',
+          supportCount: 161
+        },
+        {
+          id: 'p5',
+          pillar: 'Pledge 5: Health & Wellness',
+          title: 'Professional Health & Wellness Development',
+          icon: '💪',
+          gradient: 'from-cyan-500 to-blue-600',
+          tag: 'Staff Wellness',
+          shortDesc: 'Certified in-service Physical Training Instructors (PTIs), capped member pricing at 100/- per session, and holistic mobility coaching.',
+          fullDesc: 'Sustained physical fitness and healthy habits directly impact daily energy, mental resilience, and overall quality of life. We make professional coaching accessible and affordable.',
+          deliverables: [
+            'Certified Instruction: Contract certified physical training instructors (PTIs) from within the service to lead professional fitness sessions.',
+            'Capped, Subsidized Pricing: Subsidize training costs so that participating members contribute no more than 100/- per session (beyond base membership dues).',
+            'Holistic Coaching: Structure sessions around functional strength, cardiovascular endurance, mobility, and practical lifestyle habits tailored for working professionals.'
+          ],
+          budget: 'Capped at 100/- per session subsidy',
+          sponsor: 'Member 4 (Health & Fitness)',
+          supportCount: 174
+        },
+        {
+          id: 'p6',
+          pillar: 'Pledge 6: Financial Independence',
+          title: 'Fiscal Sustainability & Financial Independence',
+          icon: '💎',
+          gradient: 'from-purple-600 to-indigo-600',
+          tag: 'Sustainable Model',
+          shortDesc: 'Stable 50/- monthly dues, commercial tournament hosting for external departments to generate surplus, and regular audited reporting.',
+          fullDesc: 'To maintain a high standard of programming without relying entirely on ad-hoc requests, the club requires an independent, predictable revenue engine.',
+          deliverables: [
+            'Sustainable Dues Structure: Maintain standard monthly member contributions of 50/- to fund baseline operations and member services.',
+            'Commercial External Revenue: Extend paid invitations for select flagship tournaments and events to external departments, generating commercial surplus to reinvest directly into member benefits.',
+            'Audited Reporting: Deliver formal quarterly operating statements and an annual audited financial overview to all members.'
+          ],
+          budget: '50/- dues + External Event Revenue',
+          sponsor: 'Finance Controller & President',
+          supportCount: 180
+        }
+      ],
+
+      /* Realtime Staff Ideas & Wishes */
+      ideas: [
+        {
+          id: 1,
+          author: 'Operations & Support Team',
+          category: 'Social Event',
+          text: 'The advance event schedule and January yearly calendar will help us plan family leaves in advance without clashes!',
+          time: '25 mins ago',
+          likes: 31,
+          status: 'Adopted in Pledge #1'
+        },
+        {
+          id: 2,
+          author: 'Infrastructure Colleague',
+          category: 'Welfare',
+          text: 'Excited about the certified PTI sessions capped at 100/-. Perfect after long desk shifts.',
+          time: '1 hour ago',
+          likes: 27,
+          status: 'Adopted in Pledge #5'
+        },
+        {
+          id: 3,
+          author: 'Finance & Admin Staff',
+          category: 'Finance',
+          text: 'Great idea to open flagship tournaments to outside departments to fund our member retreat.',
+          time: '3 hours ago',
+          likes: 22,
+          status: 'Adopted in Pledge #6'
+        },
+        {
+          id: 4,
+          author: 'Software Dev Squad',
+          category: 'Sports & Gaming',
+          text: 'Can we schedule the tabletop and e-sports tournaments on Friday evenings with pizza?',
+          time: 'Yesterday',
+          likes: 35,
+          status: 'Adopted in Pledge #4'
+        }
+      ]
+    };
+
+    let activeFrontendCategory = 'All';
+
+    // Hash Router for Standalone Backend URL (#admin)
+    function initRouter() {
+      const currentHash = window.location.hash;
+      if (currentHash === '#admin') {
+        switchView('backend');
+      } else {
+        switchView('frontend');
+      }
+
+      window.addEventListener('hashchange', () => {
+        if (window.location.hash === '#admin') {
+          switchView('backend');
+        } else {
+          switchView('frontend');
+        }
+      });
+
+      // Update backend direct URL copy field
+      const displayEl = document.getElementById('adminUrlDisplay');
+      if (displayEl) {
+        const base = window.location.href.split('#')[0];
+        displayEl.textContent = `${base}#admin`;
+      }
+    }
+
+    function navigateToRoute(route) {
+      if (route === 'admin') {
+        window.location.hash = '#admin';
+      } else {
+        window.location.hash = '#home';
+      }
+    }
+
+    function copyAdminUrl() {
+      const base = window.location.href.split('#')[0];
+      const urlToCopy = `${base}#admin`;
+      const tempInput = document.createElement('input');
+      tempInput.value = urlToCopy;
+      document.body.appendChild(tempInput);
+      tempInput.select();
+      document.execCommand('copy');
+      document.body.removeChild(tempInput);
+      showToast("Direct Admin URL copied to clipboard: #admin");
+    }
+
+    function renderManifestoCards() {
+      const grid = document.getElementById('manifestoGrid');
+      if (!grid) return;
+
+      grid.innerHTML = campaignState.pledges.map(pledge => `
+        <div onclick="openManifestoModal('${pledge.id}')" class="p-6 rounded-3xl bg-white border border-slate-200 shadow-sm card-hover cursor-pointer flex flex-col justify-between group">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr ${pledge.gradient} text-white flex items-center justify-center text-2xl shadow-md group-hover:scale-110 transition-transform">
+                ${pledge.icon}
+              </div>
+              <span class="px-3 py-1 rounded-full text-xs font-bold bg-slate-100 text-slate-700">
+                ${pledge.tag}
+              </span>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 group-hover:text-indigo-600 transition-colors font-display">
+              ${pledge.title}
+            </h3>
+            <p class="text-slate-600 text-xs sm:text-sm mt-2 leading-relaxed">
+              ${pledge.shortDesc}
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs">
+            <span class="font-bold text-indigo-600 flex items-center gap-1 group-hover:underline">
+              <span>Read Full Details</span>
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
+            </span>
+            <span class="text-slate-400 font-semibold flex items-center gap-1">
+              <span>❤️</span>
+              <span class="font-mono text-slate-700 font-bold">${pledge.supportCount}</span>
+            </span>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function renderCandidateCards() {
+      // 1. Render 5 Committee Members in Team Ticket section
+      const membersGrid = document.getElementById('membersGrid');
+      if (membersGrid) {
+        const memberKeys = ['m1', 'm2', 'm3', 'm4', 'm5'];
+        membersGrid.innerHTML = memberKeys.map(k => {
+          const m = campaignState.candidates[k];
+          return `
+            <div class="p-5 rounded-3xl bg-white border border-slate-200 shadow-sm card-hover flex flex-col justify-between text-center">
+              <div>
+                <div class="w-14 h-14 mx-auto rounded-2xl bg-gradient-to-tr ${m.color} text-white flex items-center justify-center text-2xl mb-3 shadow-md">
+                  ${m.icon}
+                </div>
+                <span class="text-[10px] font-extrabold uppercase tracking-wider text-slate-400 block">${m.role}</span>
+                <h4 class="text-sm font-bold text-slate-900 mt-1 font-display">${m.name}</h4>
+                <p class="text-xs text-slate-500 mt-1 leading-snug">${m.domain}</p>
+              </div>
+              <div class="mt-4 pt-3 border-t border-slate-100">
+                <button onclick="castQuickEndorsement('${m.id}')" class="w-full py-1.5 px-2 rounded-xl bg-slate-50 hover:bg-indigo-50 hover:text-indigo-600 text-slate-700 text-xs font-bold border border-slate-200 transition-all flex items-center justify-center gap-1">
+                  <span>👍 Back Member</span>
+                  <span id="endorse_${m.id}" class="font-mono text-slate-500">(${m.endorsements})</span>
+                </button>
+              </div>
+            </div>
+          `;
+        }).join('');
+      }
+
+      // 2. Render Checkbox options for Committee Members in Ballot
+      const voteCheckboxGroup = document.getElementById('votingMembersCheckboxGroup');
+      if (voteCheckboxGroup) {
+        const memberKeys = ['m1', 'm2', 'm3', 'm4', 'm5'];
+        voteCheckboxGroup.innerHTML = memberKeys.map(k => {
+          const m = campaignState.candidates[k];
+          return `
+            <label class="flex items-center gap-2.5 p-3 rounded-2xl bg-slate-50 border border-slate-200 hover:border-fuchsia-400 cursor-pointer transition-all">
+              <input type="checkbox" name="membersVote" value="${m.id}" checked class="w-4 h-4 text-fuchsia-600 rounded focus:ring-fuchsia-500">
+              <div class="overflow-hidden">
+                <div class="text-xs font-bold text-slate-800 truncate">${m.icon} ${m.name}</div>
+                <div class="text-[10px] text-slate-500 truncate">${m.domain}</div>
+              </div>
+            </label>
+          `;
+        }).join('');
+      }
+    }
+
+    function updateBackendKPIs() {
+      // Top Level KPIs
+      const elBallots = document.getElementById('adminTotalBallots');
+      if (elBallots) elBallots.textContent = campaignState.totalVotes;
+
+      const elMargin = document.getElementById('adminPresMargin');
+      if (elMargin) elMargin.textContent = campaignState.slate.approvalRate + '%';
+
+      const elClicks = document.getElementById('adminManifestoClicks');
+      if (elClicks) elClicks.textContent = campaignState.manifestoClicks.toLocaleString();
+
+      const elIdeas = document.getElementById('adminTotalIdeas');
+      if (elIdeas) elIdeas.textContent = campaignState.ideas.length;
+
+      const elFeedCount = document.getElementById('adminFeedCount');
+      if (elFeedCount) elFeedCount.textContent = `${campaignState.ideas.length} items`;
+
+      // Admin Candidate Standing Table
+      const tableBody = document.getElementById('adminCandidateTableBody');
+      if (tableBody) {
+        const candidateEntries = Object.values(campaignState.candidates);
+        tableBody.innerHTML = candidateEntries.map(c => {
+          const pct = Math.min(Math.round((c.endorsements / Math.max(campaignState.totalVotes * 0.5, 100)) * 100), 99);
+          const icon = c.icon || (c.role === 'President' ? '👑' : c.role === 'Vice President' ? '🚀' : '💎');
+          return `
+            <tr>
+              <td class="py-3 font-semibold text-slate-900">
+                <div class="flex items-center gap-2">
+                  <span class="text-lg">${icon}</span>
+                  <div>
+                    <div class="font-bold text-slate-900">${c.title || c.name}</div>
+                    <div class="text-[10px] text-indigo-600 font-semibold uppercase tracking-wider">${c.team} • ${c.role}</div>
+                  </div>
+                </div>
+              </td>
+              <td class="py-3 text-slate-600">${c.domain}</td>
+              <td class="py-3 text-right font-mono font-bold text-slate-900">${c.endorsements}</td>
+              <td class="py-3 text-right">
+                <span class="px-2 py-0.5 rounded-full text-[11px] font-bold bg-emerald-50 text-emerald-700">
+                  ${pct}%
+                </span>
+              </td>
+            </tr>
+          `;
+        }).join('');
+      }
+
+      const pledgesDist = document.getElementById('adminPledgesDistribution');
+      if (pledgesDist) {
+        const sorted = [...campaignState.pledges].sort((a, b) => b.supportCount - a.supportCount);
+        const maxSupport = Math.max(...sorted.map(s => s.supportCount), 1);
+        pledgesDist.innerHTML = sorted.map(p => {
+          const barPct = Math.round((p.supportCount / maxSupport) * 100);
+          return `
+            <div>
+              <div class="flex justify-between text-xs mb-1">
+                <span class="font-semibold text-slate-800">${p.icon} ${p.title}</span>
+                <span class="font-mono text-slate-500 font-bold">${p.supportCount} likes</span>
+              </div>
+              <div class="w-full h-2 bg-slate-100 rounded-full overflow-hidden">
+                <div class="h-full bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full transition-all duration-500" style="width: ${barPct}%"></div>
+              </div>
+            </div>
+          `;
+        }).join('');
+      }
+
+      // Admin Ideas Live Stream
+      const ideasFeed = document.getElementById('adminIdeasFeed');
+      if (ideasFeed) {
+        ideasFeed.innerHTML = campaignState.ideas.map(idea => `
+          <div class="p-3.5 rounded-2xl bg-slate-50 border border-slate-200 text-xs">
+            <div class="flex items-center justify-between mb-1.5">
+              <span class="font-bold text-slate-900">${idea.author}</span>
+              <span class="px-2 py-0.5 rounded-full bg-indigo-50 text-indigo-700 font-bold text-[10px]">${idea.category}</span>
+            </div>
+            <p class="text-slate-600 leading-relaxed mb-2">"${idea.text}"</p>
+            <div class="flex items-center justify-between text-[11px] text-slate-400">
+              <span>${idea.time}</span>
+              <span class="text-pink-600 font-bold">❤️️ ${idea.likes} colleagues agreed</span>
+            </div>
+          </div>
+        `).join('');
+      }
+    }
+
+    function simulateBatchVotes() {
+      campaignState.totalVotes += 25;
+      campaignState.slate.slateEndorsements += 23;
+      campaignState.candidates.pres.endorsements += Math.floor(Math.random() * 8) + 15;
+      campaignState.candidates.vp.endorsements += Math.floor(Math.random() * 8) + 14;
+      campaignState.candidates.fc.endorsements += Math.floor(Math.random() * 8) + 14;
+
+      ['m1', 'm2', 'm3', 'm4', 'm5'].forEach(k => {
+        campaignState.candidates[k].endorsements += Math.floor(Math.random() * 6) + 12;
+      });
+
+      // Add endorsements to random pledges
+      campaignState.pledges.forEach(p => {
+        p.supportCount += Math.floor(Math.random() * 5) + 3;
+      });
+
+      recalculatePopularityMeters();
+      renderCandidateCards();
+      renderManifestoCards();
+      updateBackendKPIs();
+      fireConfetti(0.6, 0.5);
+      showToast("Added +25 live test votes across all leaders!");
+    }
+
+    function renderFrontendIdeasBoard() {
+      const container = document.getElementById('frontendIdeasBoard');
+      if (!container) return;
+
+      const filtered = activeFrontendCategory === 'All' 
+        ? campaignState.ideas 
+        : campaignState.ideas.filter(item => item.category === activeFrontendCategory);
+
+      const countBadge = document.getElementById('frontendIdeasCountBadge');
+      if (countBadge) {
+        countBadge.textContent = `${filtered.length} Idea${filtered.length === 1 ? '' : 's'} Shown`;
+      }
+
+      if (filtered.length === 0) {
+        container.innerHTML = `
+          <div class="p-8 text-center bg-white rounded-3xl border border-slate-200 text-slate-500">
+            <span class="text-3xl block mb-2">💡</span>
+            <p class="font-bold text-slate-700">No ideas in this category yet!</p>
+            <p class="text-xs mt-1">Be the first colleague to suggest an idea above.</p>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = filtered.map(idea => `
+        <div class="p-5 rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <div class="flex items-center gap-2">
+                <span class="w-8 h-8 rounded-full bg-indigo-50 text-indigo-700 font-bold text-xs flex items-center justify-center">
+                  ${idea.author.charAt(0).toUpperCase()}
+                </span>
+                <div>
+                  <h4 class="text-sm font-bold text-slate-900">${idea.author}</h4>
+                  <span class="text-[11px] text-slate-400 font-medium">${idea.time}</span>
+                </div>
+              </div>
+              <span class="px-2.5 py-1 rounded-full text-[10px] font-extrabold uppercase bg-indigo-50 text-indigo-700 border border-indigo-100">
+                ${idea.category}
+              </span>
+            </div>
+
+            <p class="text-slate-700 text-sm leading-relaxed mt-2">
+              "${idea.text}"
+            </p>
+          </div>
+
+          <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
+            <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold ${idea.status ? 'bg-emerald-50 text-emerald-700' : 'bg-slate-100 text-slate-600'}">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+              <span>${idea.status || 'Received'}</span>
+            </span>
+
+            <button onclick="likeIdea(${idea.id})" class="px-3 py-1.5 rounded-xl bg-pink-50 hover:bg-pink-100 text-pink-700 font-bold text-xs transition-all flex items-center gap-1.5">
+              <span>❤️ I Want This</span>
+              <span class="font-mono bg-white px-1.5 py-0.5 rounded text-[11px] shadow-xs">${idea.likes}</span>
+            </button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function filterFrontendIdeas(category) {
+      activeFrontendCategory = category;
+
+      const buttons = [
+        { id: 'btnFilterAll', cat: 'All' },
+        { id: 'btnFilterSocial', cat: 'Social Event' },
+        { id: 'btnFilterTech', cat: 'Tech & Training' },
+        { id: 'btnFilterWelfare', cat: 'Welfare' },
+        { id: 'btnFilterSports', cat: 'Sports & Gaming' }
+      ];
+
+      buttons.forEach(b => {
+        const el = document.getElementById(b.id);
+        if (!el) return;
+        if (b.cat === category) {
+          el.className = "px-3.5 py-1.5 rounded-full text-xs font-bold bg-indigo-600 text-white shadow-xs transition-all";
+        } else {
+          el.className = "px-3.5 py-1.5 rounded-full text-xs font-semibold bg-white border border-slate-200 text-slate-600 hover:bg-slate-100 transition-all";
+        }
+      });
+
+      renderFrontendIdeasBoard();
+    }
+
+    function likeIdea(ideaId) {
+      const target = campaignState.ideas.find(i => i.id === ideaId);
+      if (target) {
+        target.likes++;
+        renderFrontendIdeasBoard();
+        updateBackendKPIs();
+        showToast(`Agreed! You added your support for "${target.text.slice(0, 30)}..."`);
+        fireConfetti(0.8, 0.6);
+      }
+    }
+
+    function openManifestoModal(pledgeId) {
+      campaignState.manifestoClicks++;
+      campaignState.activeModalPledgeId = pledgeId;
+      const pledge = campaignState.pledges.find(p => p.id === pledgeId);
+      if (!pledge) return;
+
+      document.getElementById('modalIconWrap').className = `w-16 h-16 rounded-2xl flex items-center justify-center text-3xl text-white shadow-lg shrink-0 bg-gradient-to-tr ${pledge.gradient}`;
+      document.getElementById('modalIconWrap').textContent = pledge.icon;
+      document.getElementById('modalPillarTag').textContent = pledge.pillar;
+      document.getElementById('modalTitle').textContent = pledge.title;
+      document.getElementById('modalDescription').textContent = pledge.fullDesc;
+      
+      const delivList = document.getElementById('modalDeliverables');
+      delivList.innerHTML = pledge.deliverables.map(d => `<li class="text-slate-700">${d}</li>`).join('');
+
+      document.getElementById('modalBudget').textContent = pledge.budget;
+      document.getElementById('modalSponsor').textContent = pledge.sponsor;
+      document.getElementById('modalPledgeSupportCount').textContent = pledge.supportCount;
+
+      const modal = document.getElementById('manifestoModal');
+      const dialog = document.getElementById('modalDialog');
+      modal.classList.remove('hidden');
+      setTimeout(() => {
+        modal.classList.remove('opacity-0');
+        dialog.classList.remove('scale-95');
+        dialog.classList.add('scale-100');
+      }, 10);
+
+      updateBackendKPIs();
+    }
+
+    function closeManifestoModal() {
+      const modal = document.getElementById('manifestoModal');
+      const dialog = document.getElementById('modalDialog');
+      modal.classList.add('opacity-0');
+      dialog.classList.remove('scale-100');
+      dialog.classList.add('scale-95');
+      setTimeout(() => {
+        modal.classList.add('hidden');
+      }, 250);
+    }
+
+    function togglePledgeEndorsementFromModal() {
+      if (!campaignState.activeModalPledgeId) return;
+      const pledge = campaignState.pledges.find(p => p.id === campaignState.activeModalPledgeId);
+      if (pledge) {
+        pledge.supportCount++;
+        document.getElementById('modalPledgeSupportCount').textContent = pledge.supportCount;
+        showToast(`Thank you! Support added for "${pledge.title}"`);
+        renderManifestoCards();
+        updateBackendKPIs();
+        fireConfetti(0.5, 0.5);
+      }
+    }
+
+    function castQuickEndorsement(candidateKey) {
+      if (campaignState.candidates[candidateKey]) {
+        campaignState.candidates[candidateKey].endorsements++;
+        campaignState.totalVotes++;
+
+        // Update UI
+        if (candidateKey === 'pres') {
+          document.getElementById('presEndorseCount').textContent = campaignState.candidates.pres.endorsements;
+        } else if (candidateKey === 'vp') {
+          document.getElementById('vpEndorseCount').textContent = campaignState.candidates.vp.endorsements;
+        } else if (candidateKey === 'fc') {
+          document.getElementById('fcEndorseCount').textContent = campaignState.candidates.fc.endorsements;
+        } else {
+          const el = document.getElementById(`endorse_${candidateKey}`);
+          if (el) el.textContent = `(${campaignState.candidates[candidateKey].endorsements})`;
+        }
+
+        recalculatePopularityMeters();
+        updateBackendKPIs();
+        showToast(`Support recorded for ${campaignState.candidates[candidateKey].role || campaignState.candidates[candidateKey].name}!`);
+        fireConfetti(0.8, 0.7);
+      }
+    }
+
+    function handleVoteSubmit(e) {
+      e.preventDefault();
+      
+      const form = e.target;
+      const fullSlateChecked = document.getElementById('fullSlateCheck') ? document.getElementById('fullSlateCheck').checked : true;
+      const presChecked = document.getElementById('presCheck') ? document.getElementById('presCheck').checked : true;
+      const vpChecked = form.vpCheck ? form.vpCheck.checked : false;
+      const fcChecked = form.fcCheck ? form.fcCheck.checked : false;
+      
+      const selectedMembers = Array.from(form.querySelectorAll('input[name="membersVote"]:checked')).map(cb => cb.value);
+      const priorityPledgeId = document.getElementById('pledgePrioritySelect').value;
+
+      // Update slate endorsements
+      if (fullSlateChecked) {
+        campaignState.slate.slateEndorsements += 1;
+      }
+
+      // Update candidate endorsements
+      if (presChecked) {
+        campaignState.candidates.pres.endorsements += 1;
+      }
+      if (vpChecked) {
+        campaignState.candidates.vp.endorsements += 1;
+      }
+      if (fcChecked) {
+        campaignState.candidates.fc.endorsements += 1;
+      }
+      selectedMembers.forEach(mKey => {
+        if (campaignState.candidates[mKey]) {
+          campaignState.candidates[mKey].endorsements += 1;
+        }
+      });
+
+      // Update chosen pledge
+      const targetPledge = campaignState.pledges.find(p => p.id === priorityPledgeId);
+      if (targetPledge) {
+        targetPledge.supportCount += 1;
+      }
+
+      campaignState.totalVotes += 1;
+
+      // Celebrate
+      fireConfetti(0.5, 0.6);
+      showToast("Thank you for supporting Team #EnmengeiClub!");
+
+      // Refresh visuals
+      recalculatePopularityMeters();
+      renderCandidateCards();
+      renderManifestoCards();
+      updateBackendKPIs();
+    }
+
+    function recalculatePopularityMeters() {
+      const presVotes = campaignState.candidates.pres.endorsements;
+      const vpVotes = campaignState.candidates.vp.endorsements;
+      const fcVotes = campaignState.candidates.fc.endorsements;
+      
+      const memberKeys = ['m1', 'm2', 'm3', 'm4', 'm5'];
+      const totalMemberVotes = memberKeys.reduce((acc, k) => acc + campaignState.candidates[k].endorsements, 0);
+      const avgMemberVotes = Math.round(totalMemberVotes / 5);
+
+      const baseDenominator = Math.max(campaignState.totalVotes * 0.5, 200);
+
+      const presPct = Math.min(Math.round((presVotes / baseDenominator) * 100), 98);
+      const vpPct = Math.min(Math.round((vpVotes / baseDenominator) * 100), 96);
+      const fcPct = Math.min(Math.round((fcVotes / baseDenominator) * 100), 97);
+      const membersPct = Math.min(Math.round((avgMemberVotes / baseDenominator) * 100), 94);
+
+      // Slate Approval calculation
+      const overallApproval = ((campaignState.slate.slateEndorsements / Math.max(campaignState.totalVotes, 1)) * 100).toFixed(1);
+      campaignState.slate.approvalRate = Math.min(parseFloat(overallApproval), 99.4);
+
+      const leadShareText = document.getElementById('raceLeadShareText');
+      if (leadShareText) leadShareText.textContent = `${campaignState.slate.approvalRate}% Positive`;
+
+      const barEn = document.getElementById('barEnmengeShare');
+      if (barEn) barEn.style.width = `${campaignState.slate.approvalRate}%`;
+
+      const slateBadge = document.getElementById('totalSlateVotesBadge');
+      if (slateBadge) slateBadge.textContent = `${campaignState.slate.slateEndorsements} Staff Confirmed`;
+
+      const statApproval = document.getElementById('statApprovalRatio');
+      if (statApproval) statApproval.textContent = `${campaignState.slate.approvalRate}%`;
+
+      // Candidate meters
+      document.getElementById('barPresVal').textContent = `${presVotes} supporters (${presPct}%)`;
+      document.getElementById('barPres').style.width = `${presPct}%`;
+
+      document.getElementById('barVpVal').textContent = `${vpVotes} supporters (${vpPct}%)`;
+      document.getElementById('barVp').style.width = `${vpPct}%`;
+
+      document.getElementById('barFcVal').textContent = `${fcVotes} supporters (${fcPct}%)`;
+      document.getElementById('barFc').style.width = `${fcPct}%`;
+
+      document.getElementById('barMembersVal').textContent = `${avgMemberVotes} avg supporters (${membersPct}%)`;
+      document.getElementById('barMembers').style.width = `${membersPct}%`;
+
+      document.getElementById('presEndorseCount').textContent = presVotes;
+      document.getElementById('vpEndorseCount').textContent = vpVotes;
+      document.getElementById('fcEndorseCount').textContent = fcVotes;
+
+      document.getElementById('statLiveVotes').textContent = campaignState.totalVotes;
+
+      // Find top demanded pledge
+      const sortedPledges = [...campaignState.pledges].sort((a, b) => b.supportCount - a.supportCount);
+      document.getElementById('topPledgeName').textContent = sortedPledges[0].title;
+      document.getElementById('topPledgeVotes').textContent = `${sortedPledges[0].supportCount} picks`;
+    }
+
+    function handleIdeaSubmit(e) {
+      e.preventDefault();
+      const author = document.getElementById('ideaAuthor').value.trim() || 'A Colleague';
+      const category = document.getElementById('ideaCategory').value;
+      const text = document.getElementById('ideaText').value.trim();
+
+      if (!text) return;
+
+      const newIdea = {
+        id: Date.now(),
+        author,
+        category,
+        text,
+        time: 'Just now',
+        likes: 1,
+        status: 'Received by #Enmenge'
+      };
+
+      campaignState.ideas.unshift(newIdea);
+      showToast("Thank you! Your idea is now live on the community board & sent to the team.");
+      document.getElementById('ideaForm').reset();
+      
+      // Update both views
+      renderFrontendIdeasBoard();
+      updateBackendKPIs();
+      fireConfetti(0.5, 0.4);
+    }
+
+    function resetPollData() {
+      campaignState.totalVotes = 120;
+      campaignState.slate.slateEndorsements = 114;
+
+      campaignState.candidates.pres.endorsements = 95;
+      campaignState.candidates.vp.endorsements = 82;
+      campaignState.candidates.fc.endorsements = 88;
+      
+      const memberKeys = ['m1', 'm2', 'm3', 'm4', 'm5'];
+      memberKeys.forEach(k => {
+        campaignState.candidates[k].endorsements = 75;
+      });
+
+      recalculatePopularityMeters();
+      renderCandidateCards();
+      renderManifestoCards();
+      updateBackendKPIs();
+      showToast("Vote counters set back to starting numbers.");
+    }
+
+    function exportCampaignData() {
+      const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(campaignState, null, 2));
+      const downloadAnchor = document.createElement('a');
+      downloadAnchor.setAttribute("href", dataStr);
+      downloadAnchor.setAttribute("download", `iclub_support_data_${Date.now()}.json`);
+      document.body.appendChild(downloadAnchor);
+      downloadAnchor.click();
+      downloadAnchor.remove();
+      showToast("Report saved as JSON file.");
+    }
+
+    function switchView(viewName) {
+      campaignState.currentView = viewName;
+      const front = document.getElementById('frontendView');
+      const back = document.getElementById('backendView');
+      const btnF = document.getElementById('btnViewFrontend');
+      const btnB = document.getElementById('btnViewBackend');
+      const fNav = document.getElementById('frontendNav');
+
+      if (viewName === 'frontend') {
+        front.classList.remove('hidden');
+        back.classList.add('hidden');
+        if (fNav) fNav.classList.remove('opacity-0');
+
+        btnF.className = "flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all shadow-xs bg-white text-indigo-700";
+        btnB.className = "flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-bold text-slate-600 hover:text-slate-900 transition-all";
+      } else {
+        front.classList.add('hidden');
+        back.classList.remove('hidden');
+        if (fNav) fNav.classList.add('opacity-0');
+
+        btnB.className = "flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all shadow-xs bg-slate-900 text-white";
+        btnF.className = "flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-bold text-slate-600 hover:text-slate-900 transition-all";
+
+        updateBackendKPIs();
+      }
+    }
+
+    function showToast(message) {
+      const container = document.getElementById('toastContainer');
+      if (!container) return;
+
+      const toast = document.createElement('div');
+      toast.className = 'pointer-events-auto bg-slate-900 text-white text-xs sm:text-sm font-semibold px-4 py-3 rounded-2xl shadow-2xl border border-slate-700 flex items-center gap-3 transform translate-y-4 opacity-0 transition-all duration-300';
+      toast.innerHTML = `
+        <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
+        <span>${message}</span>
+      `;
+
+      container.appendChild(toast);
+
+      setTimeout(() => {
+        toast.classList.remove('translate-y-4', 'opacity-0');
+      }, 10);
+
+      setTimeout(() => {
+        toast.classList.add('translate-y-4', 'opacity-0');
+        setTimeout(() => toast.remove(), 300);
+      }, 4000);
+    }
+
+    function fireConfetti(x = 0.5, y = 0.5) {
+      if (typeof confetti === 'function') {
+        confetti({
+          particleCount: 50,
+          spread: 60,
+          origin: { x, y },
+          colors: ['#3b82f6', '#8b5cf6', '#ec4899', '#10b981', '#f59e0b']
+        });
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      renderManifestoCards();
+      renderCandidateCards();
+      renderFrontendIdeasBoard();
+      recalculatePopularityMeters();
+      updateBackendKPIs();
+      initRouter();
+
+      // Keyboard Esc to close modal
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeManifestoModal();
+      });
+    });
+  </script>
+</body>
+</html>
