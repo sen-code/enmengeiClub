@@ -142,7 +142,7 @@
           </a>
         </div>
 
-        <!-- Official Ballot Numbers at a Glance Bar (Placed immediately below action buttons) -->
+        <!-- Official Ballot Numbers at a Glance Bar -->
         <div class="mt-10 max-w-6xl mx-auto p-4 sm:p-5 rounded-3xl bg-white/95 backdrop-blur-md border border-slate-200 shadow-xl shadow-indigo-500/5">
           <div class="flex items-center justify-between mb-3 px-1">
             <span class="text-xs font-black tracking-wider uppercase text-slate-500">Official Ballot Numbers at a Glance:</span>
@@ -694,7 +694,7 @@
 
       <div class="mt-8 pt-6 border-t border-slate-100 flex items-center justify-between">
         <a href="#voting" onclick="closeManifestoModal()" class="px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs shadow-md transition-all flex items-center gap-2">
-          <span>🗳️ Vote for this Pledge on Ballot</span>
+          <span>🗳️️ Vote for this Pledge on Ballot</span>
         </a>
         <button onclick="closeManifestoModal()" class="px-4 py-2.5 rounded-xl border border-slate-200 text-slate-600 hover:text-slate-900 font-bold text-xs">
           Close Window
@@ -881,6 +881,10 @@
               counts[c.sheetKey] || 
               counts[c.name] || 
               counts[`${c.name} (${c.role} - ${c.num})`] || 
+              counts[`${c.name} (President - ${c.num})`] ||
+              counts[`${c.name} (Vice President - ${c.num})`] ||
+              counts[`${c.name} (Treasurer - ${c.num})`] ||
+              counts[`${c.name} (Member - ${c.num})`] ||
               counts[c.role] || 
               counts[c.id]
             ) || 0;
@@ -943,7 +947,7 @@
         type: 'vote',
         voterName: 'Anonymous',
         voterId: anonToken,
-        slateEndorsed: isFullSlate,
+        slateEndorsed: isFullSlate ? 'Yes' : 'No',
         topPledge: topPledge,
         candidates: checkedCandidates
       };
@@ -1147,14 +1151,14 @@
       ];
 
       container.innerHTML = list.map(item => `
-        <div class="p-2 rounded-2xl ${item.border} border shadow-xs flex flex-col justify-between items-center text-center">
+        <div class="p-2.5 rounded-2xl ${item.border} border shadow-xs flex flex-col justify-between items-center text-center">
           <div class="w-full">
             <div class="font-extrabold text-slate-900 text-[13px] tracking-tight truncate w-full">${item.name}</div>
             <div class="text-[9px] text-slate-500 font-bold uppercase tracking-wide truncate w-full">${item.role}</div>
           </div>
-          <div class="mt-2 flex items-center justify-between gap-1 w-full bg-white px-1.5 py-1 rounded-xl border border-slate-200">
+          <div class="mt-2 flex items-center justify-between gap-1 w-full bg-white px-2 py-1.5 rounded-xl border border-slate-200">
             <span class="px-1.5 py-0.5 rounded ${item.badge} font-black text-[10px] shrink-0 shadow-xs">#${item.num}</span>
-            <span class="text-[10px] font-mono font-extrabold text-slate-800 shrink-0">${item.votes} votes</span>
+            <span class="text-[11px] font-mono font-extrabold text-slate-800 shrink-0">${item.votes} votes</span>
           </div>
         </div>
       `).join('');
