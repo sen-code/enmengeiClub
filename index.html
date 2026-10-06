@@ -6,21 +6,18 @@
   <title>iClub 2026 | #enmengeiClub Campaign Hub</title>
   
   <!-- Open Graph & Social Share Meta Tags for URL Link Previews -->
-  <meta property="title" content="iClub 2026 | #enmengeiClub Campaign Hub">
-  <meta property="description" content="A Club Built For All Of Us. Vote #enmengeiClub for honest money management, exciting events, and a vibrant community!">
-  <meta property="image" content="https://placehold.co/1200x630/2563eb/ffffff?text=%23enmengeiClub+2026+Campaign+Hub">
-  
   <meta property="og:type" content="website">
-  <meta property="og:url" content="">
+  <meta property="og:url" content="https://placehold.co/1200x630/2563eb/ffffff?text=%23enmengeiClub+2026+Campaign+Hub">
   <meta property="og:title" content="iClub 2026 | #enmengeiClub Campaign Hub">
   <meta property="og:description" content="A Club Built For All Of Us. Vote #enmengeiClub for honest money management, exciting events, and a vibrant community!">
   <meta property="og:image" content="https://placehold.co/1200x630/2563eb/ffffff?text=%23enmengeiClub+2026+Campaign+Hub">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
 
-  <meta property="twitter:card" content="summary_large_image">
-  <meta property="twitter:url" content="">
-  <meta property="twitter:title" content="iClub 2026 | #enmengeiClub Campaign Hub">
-  <meta property="twitter:description" content="A Club Built For All Of Us. Vote #enmengeiClub for honest money management, exciting events, and a vibrant community!">
-  <meta property="twitter:image" content="https://placehold.co/1200x630/2563eb/ffffff?text=%23enmengeiClub+2026+Campaign+Hub">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="iClub 2026 | #enmengeiClub Campaign Hub">
+  <meta name="twitter:description" content="A Club Built For All Of Us. Vote #enmengeiClub for honest money management, exciting events, and a vibrant community!">
+  <meta name="twitter:image" content="https://placehold.co/1200x630/2563eb/ffffff?text=%23enmengeiClub+2026+Campaign+Hub">
 
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -201,9 +198,10 @@
             
             <div class="relative z-10 flex flex-col items-center">
               
-              <!-- Name and Position First -->
+              <!-- Name First -->
               <h3 class="text-3xl sm:text-5xl font-extrabold font-display text-white tracking-tight">Shahudh</h3>
               
+              <!-- Position & Candidate Number Second -->
               <div class="flex flex-wrap items-center justify-center gap-2 mt-2 mb-6">
                 <span class="px-4 py-1 rounded-full bg-indigo-500/30 border border-indigo-400/50 text-indigo-200 text-xs sm:text-sm font-bold uppercase tracking-wider">
                   President
@@ -214,7 +212,7 @@
                 </span>
               </div>
 
-              <!-- Photo Below -->
+              <!-- Photo Below Name & Position -->
               <div class="mb-6 relative" id="presAvatarContainer"></div>
 
               <p class="text-slate-300 text-sm sm:text-base leading-relaxed max-w-xl mx-auto">
@@ -235,9 +233,10 @@
           
           <div class="p-8 rounded-3xl bg-white border border-slate-200 shadow-lg text-center card-hover flex flex-col items-center justify-between">
             <div class="flex flex-col items-center w-full">
-              <!-- Name and Position First -->
+              <!-- Name First -->
               <h3 class="text-2xl sm:text-3xl font-extrabold text-slate-900 font-display">Nadheem</h3>
               
+              <!-- Position & Candidate Number Second -->
               <div class="flex items-center justify-center gap-2 mt-2 mb-5">
                 <span class="px-3.5 py-1 rounded-full text-xs font-bold uppercase bg-indigo-50 text-indigo-700 border border-indigo-200">
                   Vice President
@@ -247,7 +246,7 @@
                 </span>
               </div>
 
-              <!-- Photo Below -->
+              <!-- Photo Below Name & Position -->
               <div class="mb-5 relative" id="vpAvatarContainer"></div>
 
               <p class="text-sm text-slate-600 leading-relaxed max-w-sm">
@@ -265,9 +264,10 @@
 
           <div class="p-8 rounded-3xl bg-white border border-slate-200 shadow-lg text-center card-hover flex flex-col items-center justify-between">
             <div class="flex flex-col items-center w-full">
-              <!-- Name and Position First -->
+              <!-- Name First -->
               <h3 class="text-2xl sm:text-3xl font-extrabold text-slate-900 font-display">Mamnoon</h3>
               
+              <!-- Position & Candidate Number Second -->
               <div class="flex items-center justify-center gap-2 mt-2 mb-5">
                 <span class="px-3.5 py-1 rounded-full text-xs font-bold uppercase bg-emerald-50 text-emerald-700 border border-emerald-200">
                   Treasurer
@@ -277,7 +277,7 @@
                 </span>
               </div>
 
-              <!-- Photo Below -->
+              <!-- Photo Below Name & Position -->
               <div class="mb-5 relative" id="fcAvatarContainer"></div>
 
               <p class="text-sm text-slate-600 leading-relaxed max-w-sm">
@@ -461,7 +461,7 @@
               <div>
                 <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1">Category</label>
                 <select id="ideaCategory" class="w-full p-3 rounded-xl bg-slate-50 border border-slate-200 text-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none font-medium">
-                  <option value="Social Event">🏖️️ Weekend Retreat & Fun Trips</option>
+                  <option value="Social Event">🏖 Weekend Retreat & Fun Trips</option>
                   <option value="Tech & Training">⚡ Tech Sessions & Growth</option>
                   <option value="Welfare">🛋 Staff Well-being & Care</option>
                   <option value="Sports & Gaming">🎮 Sports & Gaming Tournaments</option>
@@ -941,7 +941,7 @@
 
       const payload = {
         type: 'vote',
-        voterName: 'Anonymous Colleague',
+        voterName: 'Anonymous',
         voterId: anonToken,
         slateEndorsed: isFullSlate,
         topPledge: topPledge,
@@ -1147,14 +1147,14 @@
       ];
 
       container.innerHTML = list.map(item => `
-        <div class="p-2.5 rounded-2xl ${item.border} border shadow-xs flex flex-col justify-between items-center text-center">
+        <div class="p-2 rounded-2xl ${item.border} border shadow-xs flex flex-col justify-between items-center text-center">
           <div class="w-full">
-            <div class="font-extrabold text-slate-900 text-xs sm:text-sm tracking-tight truncate w-full">${item.name}</div>
-            <div class="text-[9px] text-slate-500 font-bold uppercase tracking-wide mt-0.5 truncate w-full">${item.role}</div>
+            <div class="font-extrabold text-slate-900 text-[13px] tracking-tight truncate w-full">${item.name}</div>
+            <div class="text-[9px] text-slate-500 font-bold uppercase tracking-wide truncate w-full">${item.role}</div>
           </div>
-          <div class="mt-2.5 flex items-center justify-center gap-1.5 w-full">
-            <span class="px-2 py-0.5 rounded-md ${item.badge} font-black text-[11px] shrink-0 shadow-xs">#${item.num}</span>
-            <span class="text-[10px] font-mono font-bold text-slate-700 bg-white px-1.5 py-0.5 rounded border border-slate-200 shrink-0 truncate">${item.votes} votes</span>
+          <div class="mt-2 flex items-center justify-between gap-1 w-full bg-white px-1.5 py-1 rounded-xl border border-slate-200">
+            <span class="px-1.5 py-0.5 rounded ${item.badge} font-black text-[10px] shrink-0 shadow-xs">#${item.num}</span>
+            <span class="text-[10px] font-mono font-extrabold text-slate-800 shrink-0">${item.votes} votes</span>
           </div>
         </div>
       `).join('');
@@ -1198,8 +1198,9 @@
           return `
             <div class="p-6 rounded-3xl bg-white border border-slate-200 shadow-sm card-hover flex flex-col items-center justify-between text-center relative overflow-hidden">
               <div class="flex flex-col items-center w-full">
-                <!-- Name and Position First -->
+                <!-- Name First -->
                 <h4 class="text-xl font-extrabold text-slate-900 font-display">${m.name}</h4>
+                <!-- Position & Candidate Number Second -->
                 <div class="flex flex-wrap items-center justify-center gap-1.5 mt-1.5 mb-4">
                   <span class="px-2.5 py-0.5 rounded-full text-xs font-black bg-indigo-600 text-white shadow-xs">
                     Candidate #${m.num}
@@ -1208,7 +1209,7 @@
                     ${m.role}
                   </span>
                 </div>
-                <!-- Photo Below -->
+                <!-- Photo Below Name & Position -->
                 <div class="mb-4 w-full flex justify-center">
                   ${renderCandidateAvatar(m, 'w-20 h-20', 'rounded-2xl', m.icon)}
                 </div>
